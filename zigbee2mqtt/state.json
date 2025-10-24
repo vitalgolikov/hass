@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23.14,
-        "humidity": 64.62,
-        "pressure": 982.8,
+        "temperature": 23.04,
+        "humidity": 63.6,
+        "pressure": 982.5,
         "linkquality": 131,
         "voltage": 3215,
         "battery": 100,
@@ -31,7 +31,7 @@
         "contact": false,
         "voltage": 3055,
         "battery": 100,
-        "device_temperature": 29,
+        "device_temperature": 28,
         "power_outage_count": 1075,
         "trigger_count": 0
     },
