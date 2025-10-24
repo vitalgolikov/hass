@@ -1,0 +1,54 @@
+# автостарт Power Supply 24В Диодная подсветка
+- id: '1761053596139'
+  alias: автостарт Power Supply 24В Диодная подсветка
+  description: Включение блока питания с диодным освещением
+  triggers:
+    - trigger: homeassistant
+      event: start
+  conditions: []
+  actions:
+    - delay: "00:00:10"        # даём системе подняться
+    - action: switch.turn_on
+      target:
+        entity_id: switch.system_diod
+  mode: single
+
+# автостарт Тёплый Пол
+- id: '1761053833054'
+  alias: автостарт Теплый Пол
+  description: Включение тёплого пола при включении HASS
+  triggers:
+    - trigger: homeassistant
+      event: start
+  conditions: []
+  actions:
+    - delay: "00:00:12"        # включаем чуть позже подсветки
+    - action: switch.turn_on
+      target:
+        entity_id: switch.system_teply_pol
+  mode: single
+
+# Уведомление о старте HASS в Telegram (без информации о резервной копии)
+- id: '1761122347275'
+  alias: Уведомление о старте HASS в Telegram
+  description: Отправка сообщения при запуске Home Assistant
+  triggers:
+    - trigger: homeassistant
+      event: start
+  conditions: []
+  actions:
+    - delay: "00:00:08"  # даём сервису telegram_bot полностью стартовать
+    - action: telegram_bot.send_message
+      data:
+        config_entry_id: 01K85FEY9X86ZAEWBEGMWJEJ7V
+        target:
+          - '374673383'
+        message: >-
+          ✅ Home Assistant запущен
+          🕒 Время запуска: {{ now().strftime('%Y-%m-%d %H:%M:%S') }}
+    - action: persistent_notification.create
+      data:
+        title: "✅ HASS запущен"
+        message: >-
+          🕒 Время запуска: {{ now().strftime('%H:%M:%S %Y-%m-%d') }}
+  mode: single

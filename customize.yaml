@@ -1,0 +1,221 @@
+#Например это кухня, объединяй сущности в один блок по помещениям, разделяя помещения подобным комментарием
+#Второе слово, после названия помещения, например Кухня Свет, Свет должно быть с большой буквы, нужно чтоб с хоумкитом было красиво
+light.balkon_1:
+  friendly_name: Балкон 1
+light.zal_kvadraty: 
+  friendly_name: Зал Квадраты
+  icon: mdi:square
+light.spalnya_tarelka:
+  friendly_name: Спальня Тарелка
+light.spalnya_bra_left:
+  friendly_name: Спальня Бра Оксана
+  icon: mdi:coach-lamp
+light.spalnya_bra_right:
+  friendly_name: Спальня Бра Виталий
+  icon: mdi:coach-lamp
+light.sanuzel_2:
+  friendly_name: Санузел 2 
+  icon: mdi:paper-roll
+light.sanuzel_1:
+  friendly_name: Санузел 1
+  icon: mdi:paper-roll
+light.balkon_2:
+  friendly_name: Балкон 2
+light.lestnica_novodvor:
+  friendly_name: Лестница Новодворский
+light.spalnya_makiyazh:
+  friendly_name: Спальня Зеркало
+light.detskaya_stol:
+ friendly_name: Детская Стол
+light.garderob:
+  friendly_name: Гардероб
+  icon: mdi:wardrobe
+light.detskaya_tarelka:
+  friendly_name: Детская Тарелка
+light.spalnya_shkaf:
+  friendly_name: Спальня Шкаф
+light.koridor_1_kvardrat_vhod:
+  friendly_name: Коридор Вход
+light.koridor_1_kvardrat_server:
+  friendly_name: Коридор Серверная
+light.led1_ch4:
+  friendly_name: Зал Подсветка
+  icon: mdi:led-strip-variant
+light.led1_ch1:
+  friendly_name: Санузел 1 Зеркало 
+  icon: mdi:mirror-rectangle
+light.led2_ch4:
+  friendly_name: Спальня Подсветка
+  icon: mdi:led-strip-variant
+light.led2_ch3:
+  friendly_name: Детская Подсветка
+  icon: mdi:led-strip-variant
+light.led2_ch2: 
+  friendly_name: Коридор Подсветка
+  icon: mdi:led-strip-variant
+light.led2_ch1:
+  friendly_name: Кухня Рабочая Зона
+  icon: mdi:led-strip-variant
+light.led1_ch3:
+  friendly_name: Санузел 2 Зеркало
+  icon: mdi:mirror-rectangle
+light.servernaya:
+  friendly_name: Серверная
+light.zal_kvadratiki:
+  friendly_name: Зал Квадратики
+light.kuhnya_stakany: 
+  friendly_name: Кухня Стаканы
+  icon: mdi:vanity-light
+light.kuhnya_kvadratiki:
+  friendly_name: Кухня Квадратики
+  icon: mdi:square-medium
+light.lestnica_svetlyak: 
+  friendly_name: Лестница Светлячки
+  icon: mdi:checkbox-intermediate
+light.led1_ch2:
+  friendly_name: Зал Ниша
+  icon: mdi:led-strip-variant
+# light.sanuzel_2_zerkalo:
+#   friendly_name: Санузел 2 Зеркало
+# light.kuhnya_diod:
+#   friendly_name: Кухня Рабочая Зона
+# light.koridor_1_diod: 
+#   friendly_name: Коридор Подсветка
+# light.detskaya_story:
+#   friendly_name: Детская Подсветка
+# light.spalnya_story:
+#   friendly_name: Спальня Подсветка
+# light.sanuzel_1_zerkalo:
+#   friendly_name: Санузел 1 Зеркало
+
+
+
+fan.sanuzel_1:
+  friendly_name: Санузел 1 
+fan.sanuzel_2:
+  friendly_name: Санузел 2 
+
+binary_sensor.sanuzel_1_dver:
+  friendly_name: Санузел 1 
+binary_sensor.sanuzel_2_dver:
+  friendly_name: Санузел 2 
+binary_sensor.garderob_dver:
+  friendly_name: Гардероб
+binary_sensor.spalnya_dver:
+  friendly_name: Спальня
+binary_sensor.detskaya_dver:
+  friendly_name: Детская
+binary_sensor.servernaya_dver:
+  friendly_name: Серверная
+binary_sensor.vhod_dver:
+  friendly_name: Входная дверь
+
+binary_sensor.day_night:
+  friendly_name: Освещенность
+binary_sensor.signashka_safety:
+  friendly_name: Сигнализация
+ 
+binary_sensor.lestnica_motion:
+  friendly_name: Лестница
+binary_sensor.koridor_1_motion:
+  friendly_name: Коридор
+binary_sensor.zal_motion:
+  friendly_name: Зал
+binary_sensor.detskaya_motion:
+  friendly_name: Детская
+binary_sensor.spalnya_motion:
+  friendly_name: Спальня
+sensor.sanuzel2_climate_humidity:
+  friendly_name: Санузел 2 Влажность
+sensor.sanuzel1_climate_humidity:
+  friendly_name: Санузел 1 Влажность
+
+# Климатическая техника  
+climate.spalnya_ac:
+  friendly_name: Кондиционер
+switch.spalnya_ac_lights:
+  friendly_name: ac Индикация
+switch.spalnya_ac_air:
+  friendly_name: ac Ионизация
+switch.spalnya_ac_quiet:
+  friendly_name: ac Тихий режим
+switch.spalnya_ac_x_fan:
+  friendly_name: ac Самоочистка
+switch.spalnya_ac_beeper:
+  friendly_name: ac Звук управления
+#  
+climate.detskaya_ac:
+  friendly_name: Кондиционер
+switch.detskaya_ac_lights:
+  friendly_name: ac Индикация
+switch.detskaya_ac_air:
+  friendly_name: ac Ионизация
+switch.detskaya_ac_quiet:
+  friendly_name: ac Тихий режим
+switch.detskaya_ac_x_fan:
+  friendly_name: ac Самоочистка
+switch.detskaya_ac_beeper:
+  friendly_name: ac Звук управления
+# 
+climate.zal_ac:
+  friendly_name: Кондиционер
+switch.zal_ac_lights:
+  friendly_name: ac Индикация
+switch.zal_ac_air:
+  friendly_name: ac Ионизация
+switch.zal_ac_quiet:
+  friendly_name: ac Тихий режим
+switch.zal_ac_x_fan:
+  friendly_name: ac Самоочистка
+switch.zal_ac_beeper:
+  friendly_name: ac Звук управления
+  
+switch.system_teply_pol:
+  friendly_name:  Теплый пол
+  icon: mdi:radiator
+switch.system_diod:
+  friendly_name:  Питание LED-системы
+  icon: mdi:led-strip
+switch.system_color:
+  friendly_name:  Шкаф цветной
+  icon: mdi:lightbulb-spot
+# Розетки 
+switch.shelly_plug_shelly_plug_relay:
+  friendly_name:  Розетка Елка
+  icon: mdi:pine-tree
+switch.rozetka_girlyanda:
+  friendly_name:  Розетка Гирлянда
+  icon: mdi:pine-tree
+
+  
+  
+  
+  
+#Телевизоры
+media_player.samsung_spalnia_ue43ru7470uxua:
+  friendly_name:  TV Спальня
+  icon: mdi:television
+ 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+    
+
+
+  
