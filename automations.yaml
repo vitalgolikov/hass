@@ -46,12 +46,12 @@
       message: "\U0001F552 Время запуска: {{ now().strftime('%H:%M:%S %Y-%m-%d') }}"
   mode: single
 - id: auto_ha_gitpush_daily_0300
-  alias: Backup → git push в 03:00
-  description: Ежедневный запуск скрипта /config/ha_gitpush.sh
+  alias: "Backup - git push в 03:00"
+  description: "Ежедневный запуск скрипта /config/ha_gitpush.sh"
   trigger:
-  - platform: time
-    at: 03:00:00
+    - platform: time
+      at: "03:00:00"
   condition: []
   action:
-  - service: shell_command.ha_gitpush
+    - service: shell_command.ha_gitpush
   mode: single
