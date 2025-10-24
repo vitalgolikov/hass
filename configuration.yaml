@@ -21,3 +21,5 @@ homeassistant:
 #telegram_id_vital: "374673383"
 #telegram_id_oksana: "496868345"
 
+shell_command:
+  ha_gitpush: "/bin/bash /config/ha_gitpush.sh"

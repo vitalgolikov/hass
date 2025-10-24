@@ -20,3 +20,10 @@ secrets.yaml
 # Оставляем gitignore
 !.gitignore
 
+# Игнорируем временные данные Zigbee2MQTT
+zigbee2mqtt/state.json
+zigbee2mqtt/log/
+zigbee2mqtt/data/backup/
+zigbee2mqtt/*.db*
+zigbee2mqtt/logs/
+zigbee2mqtt/tmp/
