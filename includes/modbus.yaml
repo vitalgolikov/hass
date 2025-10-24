@@ -604,7 +604,7 @@
         address: 34
         slave: 1
         write_type: coil
-        scan_interval: 5
+        scan_interval: 2
         verify:
             input_type: coil
             address: 34
@@ -640,7 +640,7 @@
         address: 31
         slave: 1
         write_type: coil
-        scan_interval: 5
+        scan_interval: 2
         verify:
             input_type: coil
             address: 31
