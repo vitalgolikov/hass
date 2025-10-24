@@ -1,0 +1,68 @@
+version: 4
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://core-mosquitto:1883
+  user: addons
+  password: nie8iuHahng4pie6uem9eiqueigh1uthee6Uch8ohpo7iechia5chaiphae7usho
+serial:
+  port: tcp://172.22.52.86:6638
+  adapter: zstack
+  baudrate: 115200
+  rtscts: false
+advanced:
+  log_level: info
+  channel: 11
+  network_key:
+    - 71
+    - 227
+    - 74
+    - 229
+    - 172
+    - 244
+    - 15
+    - 60
+    - 69
+    - 168
+    - 147
+    - 216
+    - 125
+    - 36
+    - 200
+    - 50
+  pan_id: 38545
+  ext_pan_id:
+    - 208
+    - 129
+    - 172
+    - 111
+    - 168
+    - 136
+    - 40
+    - 105
+frontend:
+  enabled: true
+  port: 8099
+homeassistant:
+  enabled: true
+devices:
+  '0x00158d0004465ae7':
+    friendly_name: climate_sensor_zal
+    description: ''
+  '0x00158d0009cf9de3':
+    friendly_name: climate_sensor_sanuzel1
+  '0x00158d0004448bae':
+    friendly_name: door_sensor_balkon1
+  '0x00158d00075f7472':
+    friendly_name: curtains_sensor_kuhnya
+  '0x84ba20fffe6ac209':
+    friendly_name: repeater_garderob
+  '0x00158d00087b8978':
+    friendly_name: climate_sensor_spalnya
+  '0x00158d0007d3a3a4':
+    friendly_name: climate_sensor_sanuzel2
+  '0x00158d0003f1b455':
+    friendly_name: curtains_sensor_zal
+  '0x00158d000775bb78':
+    friendly_name: curtains_sensor_detskaya
+  '0x00158d00075f766d':
+    friendly_name: curtains_sensor_spalnya

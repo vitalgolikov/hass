@@ -1,0 +1,104 @@
+detskaya_light:
+
+    automation:
+                  
+
+      - id: Детская синхронизация выключатель-светильник
+        # alias: detskaya_switch_light_sync
+        alias: автоматизация детская синхронизация выключатель-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.detskaya_diod
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.detskaya_diod
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led2_ch3
+              - conditions:
+                  - condition: state
+                    entity_id: switch.detskaya_diod
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led2_ch3
+
+      - id: Детская синхронизация светильник-выключатель
+        # alias: detskaya_light_switch_sync
+        alias: автоматизация детская синхронизация светильник-выключатель
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led2_ch3
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch3
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.detskaya_diod
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch3
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.detskaya_diod
+                    
+      - id: Детская синхронизация выключатель-цветной-светильник
+        # alias: detskaya_switch_color_light_sync
+        alias: автоматизация детская синхронизация выключатель-цветной-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.detskaya_color
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.detskaya_color
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.color
+              - conditions:
+                  - condition: state
+                    entity_id: switch.detskaya_color
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.color
+
+      - id: Детская синхронизация цветной-светильник-выключатель
+        # alias: detskaya_color_light_switch_sync
+        alias: автоматизация детская синхронизация цветной-светильник-выключатель
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.color
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.color
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.detskaya_color
+              - conditions:
+                  - condition: state
+                    entity_id: light.color
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.detskaya_color                   

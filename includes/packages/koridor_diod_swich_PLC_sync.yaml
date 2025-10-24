@@ -1,0 +1,55 @@
+koridor_light:
+
+    automation:
+                  
+
+      - id: Коридор синхронизация выключатель-светильник
+        # alias: koridor_switch_light_sync
+        alias: автоматизация коридор синхронизация выключатель-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.koridor_diod
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.koridor_diod
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led2_ch2
+              - conditions:
+                  - condition: state
+                    entity_id: switch.koridor_diod
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led2_ch2
+
+      - id: Коридор синхронизация светильник-выключатель
+        # alias: koridor_light_switch_sync
+        alias: автоматизация коридор синхронизация светильник-выключатель
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led2_ch2
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch2
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.koridor_diod
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch2
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.koridor_diod
+

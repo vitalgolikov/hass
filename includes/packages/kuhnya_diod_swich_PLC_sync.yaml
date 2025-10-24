@@ -1,0 +1,55 @@
+kuhnya_light:
+
+    automation:
+                  
+
+      - id: Кухня синхронизация выключатель-светильник
+        # alias: kuhnya_switch_light_sync
+        alias: автоматизация кухня синхронизация выключатель-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.kuhnya_diod
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.kuhnya_diod
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led2_ch1
+              - conditions:
+                  - condition: state
+                    entity_id: switch.kuhnya_diod
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led2_ch1
+
+      - id: Кухня синхронизация светильник-выключатель
+        alias: автоматизация кухня синхронизация светильник-выключатель
+                # alias: kuhnya_light_switch_sync
+                
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led2_ch1
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch1
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.kuhnya_diod
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch1
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.kuhnya_diod

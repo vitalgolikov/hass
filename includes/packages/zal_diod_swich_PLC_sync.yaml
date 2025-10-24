@@ -1,0 +1,54 @@
+zal_light:
+
+    automation:
+                  
+
+      - id: Зал синхронизация выключатель-светильник
+        # alias: zal_switch_light_sync
+        alias: автоматизация зал синхронизация выключатель-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.zal_nisha
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.zal_nisha
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led1_ch2
+              - conditions:
+                  - condition: state
+                    entity_id: switch.zal_nisha
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led1_ch2
+
+      - id: Зал синхронизация светильник-выключатель
+        # alias: zal_light_switch_sync
+        alias: автоматизация зал синхронизация светильник-выключатель
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led1_ch2
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led1_ch2
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.zal_nisha
+              - conditions:
+                  - condition: state
+                    entity_id: light.led1_ch2
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.zal_nisha

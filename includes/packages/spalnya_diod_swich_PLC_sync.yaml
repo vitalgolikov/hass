@@ -1,0 +1,54 @@
+spalnya_light:
+
+    automation:
+                  
+
+      - id: Спальня синхронизация выключатель-светильник
+        alias: автоматизация спальня синхронизация выключатель-подсветка
+        # alias: spalnya_switch_light_sync
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.spalnya_diod
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.spalnya_diod
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led2_ch4
+              - conditions:
+                  - condition: state
+                    entity_id: switch.spalnya_diod
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led2_ch4
+
+      - id: Спальня синхронизация светильник-выключатель
+        alias: автоматизация спальня синхронизация подсветка выключатель
+            # alias: spalnya_light_switch_sync
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led2_ch4
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch4
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.spalnya_diod
+              - conditions:
+                  - condition: state
+                    entity_id: light.led2_ch4
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.spalnya_diod

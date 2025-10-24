@@ -1,0 +1,54 @@
+tualet2_light:
+
+    automation:
+                  
+
+      - id: Санузел2-зеркало синхронизация выключатель-светильник
+        # alias: su2_switch_light_sync
+        alias: автоматизация санузел2-зеркало синхронизация выключатель-светильник
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - switch.sanuzel_2_zerkalo
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: switch.sanuzel_2_zerkalo
+                    state: 'on'
+                sequence:
+                  - service: light.turn_on
+                    entity_id: light.led1_ch3
+              - conditions:
+                  - condition: state
+                    entity_id: switch.sanuzel_2_zerkalo
+                    state: 'off'
+                sequence:
+                  - service: light.turn_off
+                    entity_id: light.led1_ch3
+
+      - id: Санузел2-зеркало синхронизация светильник-выключатель
+        # alias: su2_light_switch_sync
+        alias: автоматизация санузел2-зеркало синхронизация светильник-выключатель
+        initial_state: true
+        trigger:
+        - platform: state
+          entity_id:
+            - light.led1_ch3
+        action:
+            - choose:
+              - conditions:
+                  - condition: state
+                    entity_id: light.led1_ch3
+                    state: 'on'
+                sequence:
+                  - service: switch.turn_on
+                    entity_id: switch.sanuzel_2_zerkalo
+              - conditions:
+                  - condition: state
+                    entity_id: light.led1_ch3
+                    state: 'off'
+                sequence:
+                  - service: switch.turn_off
+                    entity_id: switch.sanuzel_2_zerkalo

@@ -1,0 +1,697 @@
+  - name: "PLC"
+    type: tcp
+    host: !secret plc_ip
+    port: 502
+    timeout: 2
+  
+    lights:
+      - name: "balkon_1"
+        # name: "lgt01"
+        address: 0
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 0
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_balkon_1
+      - name: "zal_kvadraty"
+        # name: "lgt02"
+        address: 1
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 1
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_zal_kvadraty            
+      - name: "spalnya_tarelka"
+        # name: "lgt04"
+        address: 3
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 3
+            state_on: 1
+            state_off: 0      
+        unique_id: modbus_light_spalnya_tarelka
+      - name: "spalnya_bra_left"
+        # name: "lgt05"
+        address: 4
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 4
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_spalnya_bra_left
+      - name: "spalnya_bra_right"
+        # name: "lgt06"
+        address: 5
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 5
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_spalnya_bra_right
+      - name: "sanuzel_2"
+        # name: "lgt09"
+        address: 16
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 16
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_sanuzel_2
+      - name: "sanuzel_1"
+        # name: "lgt10"
+        address: 17
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 17
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_sanuzel_1
+      - name: "balkon_2"
+        # name: "lgt11"
+        address: 18
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 18
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_balkon_2
+      - name: "lestnica_novodvor"
+        # name: "lgt12"
+        address: 19
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 19
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_lestnica_novodvor
+      - name: "spalnya_makiyazh"
+        # name: "lgt13"
+        address: 20
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 20
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_light_spalnya_makiyazh
+      - name: "detskaya_stol"
+        # name: "lgt14"
+        address: 21
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 21
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_detskaya_stol
+      - name: "garderob"
+        # name: "lgt15"
+        address: 22
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 22
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_garderob
+      - name: "detskaya_tarelka"
+        # name: "lgt16"
+        address: 23
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 23
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_light_detskaya_tarelka
+      - name: "spalnya_shkaf"
+        # name: "lgt17"
+        address: 24
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 24
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_spalnya_shkaf
+      - name: "koridor_1_kvardrat_vhod"
+        # name: "lgt19"
+        address: 26
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 26
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_koridor_1_kvardrat_vhod
+      - name: "koridor_1_kvardrat_server"
+        # name: "lgt20"
+        address: 27
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 27
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_koridor_1_kvardrat_server
+      - name: "servernaya"
+        # name: "lgt29"
+        address: 36
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 36
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_light_servernaya
+      - name: "zal_kvadratiki"
+        # name: "lgt30"
+        address: 37
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 37
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_zal_kvadratiki
+      - name: "kuhnya_stakany"
+        # name: "lgt31"
+        address: 38
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 38
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_kuhnya_stakany
+      - name: "kuhnya_kvadratiki"
+        # name: "lgt32"
+        address: 39
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 39
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_kuhnya_kvadratiki
+      - name: "lestnica_svetlyak"
+        # name: "lgt33"
+        address: 8
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 8
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_lestnica_svetlyak
+      - name: "kuhnya_shtor_open" 
+        # name: "lgt35"
+        address: 10
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 10
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_kuhnya_shtor_open
+      - name: "kuhnya_shtor_close" 
+        # name: "lgt36"
+        address: 11
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 11
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_kuhnya_shtor_close
+      - name: "zal_shtor_open"
+        # name: "lgt37"
+        address: 12
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 12
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_light_zal_shtor_open
+      - name: "zal_shtor_close"
+        # name: "lgt38"
+        address: 13
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 13
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_light_zal_shtor_close
+      - name: "spal_shtor_open" 
+        # name: "lgt39"
+        address: 14
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 14
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_spal_shtor_open
+      - name: "spal_shtor_close"
+        # name: "lgt40"
+        address: 15
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 15
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_light_spal_shtor_close
+      - name: "detskaya_shtor_open"
+        # name: "lgt41"
+        address: 40
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 40
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_light_detskaya_shtor_open
+      - name: "detskaya_shtor_close"
+        # name: "lgt42"
+        address: 41
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 41
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_light_detskaya_shtor_close
+    binary_sensors:
+      - name: "sanuzel_1_dver"
+        # name: "sns01"
+        address: 48
+        slave: 1
+        scan_interval: 5
+        device_class: door
+        unique_id: modbus_binary_sensor_sanuzel_1_dver
+      - name: "garderob_dver"
+        # name: "sns02"
+        address: 49
+        slave: 1
+        scan_interval: 5
+        device_class: door
+        unique_id: modbus_binary_sensor_garderob_dver
+      - name: "spalnya_dver"
+        # name: "sns03"
+        address: 50
+        slave: 1
+        scan_interval: 5
+        device_class: door
+        unique_id: modbus_binary_sensor_spalnya_dver
+      - name: "detskaya_dver"
+        #name: "sns04"
+        address: 51
+        slave: 1
+        scan_interval: 5
+        device_class: door
+        unique_id: modbus_binary_sensor_detskaya_dver
+      - name: "lestnica_motion"
+        # name: "sns05"
+        address: 52
+        slave: 1
+        scan_interval: 5
+        device_class: motion
+        unique_id: modbus_binary_sensor_lestnica_motion
+      - name: "sanuzel_2_dver"
+        # name: "sns06"
+        address: 53
+        slave: 1
+        scan_interval: 5
+        device_class: door
+        unique_id: modbus_binary_sensor_sanuzel_2_dver
+      - name: "servernaya_dver"
+        # name: "sns07"
+        address: 54
+        slave: 1
+        scan_interval: 5
+        device_class:  door
+        unique_id: modbus_binary_sensor_servernaya_dver
+      - name: "vhod_dver"
+        # name: "sns08"
+        address: 55
+        slave: 1
+        scan_interval: 5
+        device_class:  door
+        unique_id: modbus_binary_sensor_vhod_dver
+      - name: "koridor_1_motion"
+        # name: "sns09"
+        address: 56
+        slave: 1
+        scan_interval: 5
+        device_class:  motion
+        unique_id: modbus_binary_sensor_koridor_1_motion
+      - name: "zal_motion"
+        # name: "sns10"
+        address: 57
+        slave: 1
+        scan_interval: 50
+        device_class:  motion
+        unique_id: modbus_binary_sensor_zal_motion
+      - name: "detskaya_motion"
+        # name: "sns11"
+        address: 58
+        slave: 1
+        scan_interval: 5
+        device_class:  motion
+        unique_id: modbus_binary_sensor_detskaya_motion
+      - name: "spalnya_motion"
+        #name: "sns12"
+        address: 59
+        slave: 1
+        scan_interval: 5
+        device_class:  motion
+        unique_id: modbus_binary_sensor_spalnya_motion
+      - name: "signashka_safety"
+        # name: "sns13"
+        address: 60
+        slave: 1
+        scan_interval: 50
+        device_class:  safety
+        unique_id: modbus_binary_sensor_signashka_safety
+      - name: "day_night"
+        # name: "sns14"
+        address: 61
+        slave: 1
+        scan_interval: 20
+        device_class:  light
+        unique_id: modbus_binary_sensor_day_night
+      - name: "home_ac_in"
+        # name: "sns15"
+        address: 62
+        slave: 1
+        scan_interval: 50
+        device_class:  power
+    
+        unique_id: modbus_binary_sensor_home_ac_in
+    #   - name: "lgt03"
+    #     # name: "lgt03"
+    #     address: 2
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 2
+    #         state_on: 1
+    #         state_off: 0
+
+    #   - name: "lgt44"
+    #     # name: "lgt44"
+    #     address: 43
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 43
+    #         state_on: 1
+    #         state_off: 0     
+    #   - name: "lgt45"
+    #     # name: "lgt45"
+    #     address: 44
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 44
+    #         state_on: 1
+    #         state_off: 0 
+    #   - name: "lgt46"
+    #     # name: "lgt46
+    #     address: 45
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 45
+    #         state_on: 1
+    #         state_off: 0  
+    #   - name: "lgt47"
+    #     # name: "lgt47"
+    #     address: 46
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 46
+    #         state_on: 1
+    #         state_off: 0     
+    #   - name: "lgt48"
+    #     # name: "lgt48"
+    #     address: 47
+    #     slave: 1
+    #     write_type: coil
+    #     scan_interval: 5
+    #     verify:
+    #         input_type: coil
+    #         address: 47
+    #         state_on: 1
+    #         state_off: 0 
+    #   - name: "sns16"
+    #     # name: "sns16"
+    #     address: 63
+    #     slave: 1
+    #     scan_interval: 5
+    #     device_class:  window
+        
+    fans:    
+       
+      - name: "sanuzel_2"
+     # name: "lgt07"
+        address: 6
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 6
+            state_on: 1
+            state_off: 0 
+            
+        unique_id: modbus_fan_sanuzel_2
+      - name: "sanuzel_1"
+        # name: "lgt08"
+        address: 7
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 7
+            state_on: 1
+            state_off: 0 
+   
+        unique_id: modbus_fan_sanuzel_1
+    switches:
+      - name: "system_color"
+        # name: "lgt18"
+        address: 25
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 25
+            state_on: 1
+            state_off: 0        
+        unique_id: modbus_switch_system_color
+      - name: "system_teply_pol"
+        # name: "lgt22"
+        address: 29
+        slave: 1
+        write_type: coil
+        scan_interval: 500
+        verify:
+            input_type: coil
+            address: 29
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_switch_system_teply_pol
+      - name: "system_diod"
+        #name: "lgt21"
+        address: 28
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 28
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_switch_system_diod
+      - name: "kuhnya_diod"
+        # name: "lgt27"
+        address: 34
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 34
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_switch_kuhnya_diod
+      - name: "sanuzel_1_zerkalo"
+        # name: "lgt23"
+        address: 30
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 30
+            state_on: 1
+            state_off: 0   
+        unique_id: modbus_switch_sanuzel_1_zerkalo
+      - name: "sanuzel_2_zerkalo"
+        # name: "lgt28"
+        address: 35
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 35
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_switch_sanuzel_2_zerkalo
+      - name: "spalnya_diod"
+        # name: "lgt24"
+        address: 31
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 31
+            state_on: 1
+            state_off: 0 
+        unique_id: modbus_switch_spalnya_diod
+      - name: "detskaya_diod"
+        #name: "lgt25"
+        address: 32
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 32
+            state_on: 1
+            state_off: 0
+        unique_id: modbus_switch_detskaya_diod
+      - name: "koridor_diod"
+        #name: "lgt26"
+        address: 33
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 33
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_switch_koridor_diod
+      - name: "zal_nisha"
+        # name: "lgt34"
+        address: 9
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 9
+            state_on: 1
+            state_off: 0     
+        unique_id: modbus_switch_zal_nisha
+      - name: "detskaya_color"
+        # name: "lgt43"
+        address: 42
+        slave: 1
+        write_type: coil
+        scan_interval: 5
+        verify:
+            input_type: coil
+            address: 42
+            state_on: 1
+            state_off: 0  
+        unique_id: modbus_switch_detskaya_color
