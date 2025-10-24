@@ -580,7 +580,7 @@
         address: 29
         slave: 1
         write_type: coil
-        scan_interval: 500
+        scan_interval: 100
         verify:
             input_type: coil
             address: 29
