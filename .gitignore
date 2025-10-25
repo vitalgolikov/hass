@@ -27,3 +27,4 @@ zigbee2mqtt/data/backup/
 zigbee2mqtt/*.db*
 zigbee2mqtt/logs/
 zigbee2mqtt/tmp/
+zigbee2mqtt/state.json
