@@ -1,18 +1,18 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 22.97,
-        "humidity": 62.56,
-        "pressure": 982,
+        "temperature": 22.65,
+        "humidity": 62,
+        "pressure": 979.7,
         "linkquality": 131,
-        "voltage": 3215,
+        "voltage": 3205,
         "battery": 100,
         "power_outage_count": 2
     },
     "0x00158d0009cf9de3": {
         "linkquality": 102,
-        "temperature": 23.44,
-        "humidity": 60.08,
-        "pressure": 984,
+        "temperature": 23.31,
+        "humidity": 60.3,
+        "pressure": 981.7,
         "voltage": 2965,
         "battery": 77,
         "power_outage_count": 15
@@ -21,7 +21,7 @@
         "linkquality": 185,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 25,
+        "device_temperature": 24,
         "power_outage_count": 128,
         "trigger_count": 0,
         "contact": true
@@ -39,7 +39,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 232,
+        "voltage": 226,
         "linkquality": 61,
         "state": "ON",
         "power_outage_memory": "off",
@@ -47,19 +47,19 @@
         "child_lock": "UNLOCK"
     },
     "0x00158d00087b8978": {
-        "humidity": 65.3,
-        "pressure": 984.1,
+        "humidity": 68.27,
+        "pressure": 981.5,
         "linkquality": 61,
-        "temperature": 22.96,
+        "temperature": 23.01,
         "voltage": 2985,
         "battery": 90,
         "power_outage_count": 167
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 112,
-        "temperature": 23.44,
-        "humidity": 67,
-        "pressure": 983.2,
+        "temperature": 22.91,
+        "humidity": 64.17,
+        "pressure": 981,
         "voltage": 3215,
         "battery": 100,
         "power_outage_count": 44899
@@ -76,7 +76,7 @@
     "0x00158d000775bb78": {
         "contact": true,
         "linkquality": 36,
-        "voltage": 3005,
+        "voltage": 3015,
         "battery": 100,
         "device_temperature": 28,
         "power_outage_count": 36,
