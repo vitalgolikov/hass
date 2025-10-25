@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 22.4,
+        "temperature": 22.45,
         "humidity": 62.52,
-        "pressure": 979,
+        "pressure": 979.2,
         "linkquality": 134,
         "voltage": 3185,
         "battery": 100,
@@ -39,7 +39,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 221,
+        "voltage": 224,
         "linkquality": 40,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -58,8 +58,8 @@
     "0x00158d0007d3a3a4": {
         "linkquality": 109,
         "temperature": 22.89,
-        "humidity": 72.38,
-        "pressure": 980.2,
+        "humidity": 71.56,
+        "pressure": 980.4,
         "voltage": 3195,
         "battery": 100,
         "power_outage_count": 44899
