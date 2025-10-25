@@ -52,8 +52,6 @@ devices:
     friendly_name: climate_sensor_sanuzel1
   '0x00158d0004448bae':
     friendly_name: door_sensor_balkon1
-  '0x00158d00075f7472':
-    friendly_name: curtains_sensor_kuhnya
   '0x84ba20fffe6ac209':
     friendly_name: repeater_garderob
   '0x00158d00087b8978':
@@ -66,3 +64,5 @@ devices:
     friendly_name: curtains_sensor_detskaya
   '0x00158d00075f766d':
     friendly_name: curtains_sensor_spalnya
+  '0x00158d00075f7472':
+    friendly_name: curtains_sensor_kuhnya

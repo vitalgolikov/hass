@@ -6,7 +6,7 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-automation: !include automations.yaml
+automation: !include_dir_merge_list includes/automations
 script: !include scripts.yaml
 scene: !include scenes.yaml
 modbus: !include includes/modbus.yaml
@@ -23,3 +23,4 @@ homeassistant:
 
 shell_command:
   ha_gitpush: "/bin/bash /config/ha_gitpush.sh"
+
