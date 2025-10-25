@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 22.63,
-        "humidity": 58.38,
-        "pressure": 982,
+        "temperature": 22.58,
+        "humidity": 58.36,
+        "pressure": 982.1,
         "linkquality": 134,
         "voltage": 3185,
         "battery": 100,
@@ -11,7 +11,7 @@
     "0x00158d0009cf9de3": {
         "linkquality": 105,
         "temperature": 23.37,
-        "humidity": 56.53,
+        "humidity": 57.07,
         "pressure": 984.2,
         "voltage": 2955,
         "battery": 70,
@@ -21,7 +21,7 @@
         "linkquality": 171,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 25,
+        "device_temperature": 24,
         "power_outage_count": 128,
         "trigger_count": 0,
         "contact": true
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 226,
+        "voltage": 228,
         "linkquality": 21,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -38,19 +38,19 @@
         "child_lock": "UNLOCK"
     },
     "0x00158d00087b8978": {
-        "humidity": 52.42,
-        "pressure": 983.7,
+        "humidity": 55.51,
+        "pressure": 983.8,
         "linkquality": 61,
-        "temperature": 22.85,
+        "temperature": 23.37,
         "voltage": 2985,
         "battery": 90,
         "power_outage_count": 167
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 112,
-        "temperature": 23.24,
-        "humidity": 88.5,
-        "pressure": 983,
+        "temperature": 23.2,
+        "humidity": 84.8,
+        "pressure": 983.3,
         "voltage": 3185,
         "battery": 100,
         "power_outage_count": 44899
@@ -65,13 +65,13 @@
         "linkquality": 142
     },
     "0x00158d000775bb78": {
-        "contact": false,
+        "contact": true,
         "linkquality": 40,
-        "voltage": 3015,
+        "voltage": 3005,
         "battery": 100,
-        "device_temperature": 26,
+        "device_temperature": 33,
         "power_outage_count": 36,
-        "trigger_count": 0
+        "trigger_count": 9
     },
     "0x00158d00075f766d": {
         "linkquality": 0,
