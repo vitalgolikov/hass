@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 22.38,
-        "humidity": 65.61,
-        "pressure": 971.9,
+        "temperature": 22.52,
+        "humidity": 66.77,
+        "pressure": 971.4,
         "linkquality": 131,
         "voltage": 3145,
         "battery": 100,
@@ -10,9 +10,9 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 116,
-        "temperature": 23.17,
-        "humidity": 68.99,
-        "pressure": 973.9,
+        "temperature": 23.31,
+        "humidity": 65.67,
+        "pressure": 973.6,
         "voltage": 2955,
         "battery": 70,
         "power_outage_count": 15
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 225,
+        "voltage": 224,
         "linkquality": 87,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -38,10 +38,10 @@
         "child_lock": "UNLOCK"
     },
     "0x00158d00087b8978": {
-        "humidity": 63.81,
-        "pressure": 973.5,
+        "humidity": 65.48,
+        "pressure": 973.2,
         "linkquality": 58,
-        "temperature": 22.16,
+        "temperature": 22.11,
         "voltage": 2975,
         "battery": 83,
         "power_outage_count": 167
