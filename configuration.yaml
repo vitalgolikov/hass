@@ -24,3 +24,5 @@ homeassistant:
 shell_command:
   ha_gitpush: "/bin/bash /config/ha_gitpush.sh"
 
+recorder:
+  db_url: mysql://homeassistant:AmYmyDFnL5@core-mariadb/homeassistant?charset=utf8mb4
