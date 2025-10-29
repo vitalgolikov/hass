@@ -1,0 +1,50 @@
+# Файл: includes/packages/lestnica_night.yaml
+# ВАЖНО: при packages: !include_dir_merge_named нужен корневой ключ-пакет!
+lestnica_night:
+  input_datetime:
+    night_mode_start:
+      name: Ночной режим — начало
+      has_date: false
+      has_time: true
+      initial: "23:00:00"
+    night_mode_end:
+      name: Ночной режим — конец
+      has_date: false
+      has_time: true
+      initial: "07:00:00"
+
+  automation:
+    - id: lestnica_night_quick_off
+      alias: "Лестница — ночной режим (10с)"
+      mode: restart
+
+      trigger:
+        - platform: state
+          entity_id: light.lestnica_svetlyak
+          to: "on"
+
+      # Срабатывает только в пределах заданного окна (корректно через полночь)
+      condition:
+        - condition: template
+          value_template: >
+            {% set start = today_at(states('input_datetime.night_mode_start')) %}
+            {% set end = today_at(states('input_datetime.night_mode_end')) %}
+            {% set nowdt = now() %}
+            {% if end <= start %}
+              {% set end = end + timedelta(days=1) %}
+              {% if nowdt < start %}
+                {% set nowdt = nowdt + timedelta(days=1) %}
+              {% endif %}
+            {% endif %}
+            {{ start <= nowdt <= end }}
+
+      action:
+        - delay: "00:00:10"
+        - condition: state
+          entity_id: light.lestnica_svetlyak
+          state: "on"
+        - service: light.turn_off
+          target:
+            entity_id: light.lestnica_svetlyak
+
+# Примечание: Ошибка “Integration 'night_mode_start' not found” возникла из-за отсутствия корневого ключа пакета.

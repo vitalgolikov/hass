@@ -1,80 +1,118 @@
+# ===================================
+# КОММЕНТАРИИ И РЕКОМЕНДАЦИИ ПО СТРУКТУРЕ
+# ===================================
+# Автоматически упорядочено и обновлено: 29.10.2025
+# Стиль иконок: наглядный 💡
 #Например это кухня, объединяй сущности в один блок по помещениям, разделяя помещения подобным комментарием
 #Второе слово, после названия помещения, например Кухня Свет, Свет должно быть с большой буквы, нужно чтоб с хоумкитом было красиво
+
+# ===================================
+# ОСВЕЩЕНИЕ
+# ===================================
+
+# Балконы Свет
 light.balkon_1:
-  friendly_name: Балкон 1
-light.zal_kvadraty: 
-  friendly_name: Зал Квадраты
-  icon: mdi:square
-light.spalnya_tarelka:
-  friendly_name: Спальня Тарелка
-light.spalnya_bra_left:
-  friendly_name: Спальня Бра Оксана
-  icon: mdi:coach-lamp
-light.spalnya_bra_right:
-  friendly_name: Спальня Бра Виталий
-  icon: mdi:coach-lamp
-light.sanuzel_2:
-  friendly_name: Санузел 2 
-  icon: mdi:paper-roll
-light.sanuzel_1:
-  friendly_name: Санузел 1
-  icon: mdi:paper-roll
+  friendly_name: "Балкон 1"
 light.balkon_2:
-  friendly_name: Балкон 2
-light.lestnica_novodvor:
-  friendly_name: Лестница Новодворский
-light.spalnya_makiyazh:
-  friendly_name: Спальня Зеркало
-light.detskaya_stol:
- friendly_name: Детская Стол
+  friendly_name: "Балкон 2"
+
+# Гардероб Свет
 light.garderob:
-  friendly_name: Гардероб
-  icon: mdi:wardrobe
-light.detskaya_tarelka:
-  friendly_name: Детская Тарелка
-light.spalnya_shkaf:
-  friendly_name: Спальня Шкаф
-light.koridor_1_kvardrat_vhod:
-  friendly_name: Коридор Вход
-light.koridor_1_kvardrat_server:
-  friendly_name: Коридор Серверная
-light.led1_ch4:
-  friendly_name: Зал Подсветка
-  icon: mdi:led-strip-variant
-light.led1_ch1:
-  friendly_name: Санузел 1 Зеркало 
-  icon: mdi:mirror-rectangle
-light.led2_ch4:
-  friendly_name: Спальня Подсветка
-  icon: mdi:led-strip-variant
-light.led2_ch3:
-  friendly_name: Детская Подсветка
-  icon: mdi:led-strip-variant
-light.led2_ch2: 
-  friendly_name: Коридор Подсветка
-  icon: mdi:led-strip-variant
-light.led2_ch1:
-  friendly_name: Кухня Рабочая Зона
-  icon: mdi:led-strip-variant
-light.led1_ch3:
-  friendly_name: Санузел 2 Зеркало
-  icon: mdi:mirror-rectangle
-light.servernaya:
-  friendly_name: Серверная
+  friendly_name: "Гардероб"
+  
+# Зал Свет
+light.zal_kvadraty:
+  friendly_name: "Зал Квадраты"
+  icon: mdi:square-outline
 light.zal_kvadratiki:
-  friendly_name: Зал Квадратики
-light.kuhnya_stakany: 
-  friendly_name: Кухня Стаканы
+  friendly_name: "Зал Квадратики"
+  icon: mdi:square-medium
+light.led1_ch4:
+  friendly_name: "Шторы Подсветка"
+  icon: mdi:led-strip-variant
+light.led1_ch2:
+  friendly_name: "Ниша Подсветка"
+  icon: mdi:led-strip-variant
+
+# Спальня Свет
+light.spalnya_tarelka:
+  friendly_name: "Спальня Тарелка"
+  icon: mdi:ceiling-light-multiple-outline
+light.spalnya_bra_left:
+  friendly_name: "Спальня Бра Оксана"
+  icon: mdi:wall-sconce-round
+light.spalnya_bra_right:
+  friendly_name: "Спальня Бра Виталий"
+  icon: mdi:wall-sconce-round
+light.spalnya_makiyazh:
+  friendly_name: "Спальня Зеркало"
+  icon: mdi:mirror-rectangle
+light.spalnya_shkaf:
+  friendly_name: "Спальня Шкаф"
+  icon: mdi:wardrobe
+light.led2_ch4:
+  friendly_name: "Шторы Подсветка"
+  icon: mdi:led-strip-variant
+
+# Детская Свет
+light.detskaya_stol:
+  friendly_name: "Детская Стол"
+  icon: mdi:desk-lamp
+light.detskaya_tarelka:
+  friendly_name: "Детская Тарелка"
+  icon: mdi:ceiling-light-multiple-outline
+light.led2_ch3:
+  friendly_name: "Шторы Подсветка"
+  icon: mdi:led-strip-variant
+
+# Кухня Свет
+light.led2_ch1:
+  friendly_name: "Кухня Рабочая Зона"
+  icon: mdi:led-strip-variant
+light.kuhnya_stakany:
+  friendly_name: "Кухня Стаканы"
   icon: mdi:vanity-light
 light.kuhnya_kvadratiki:
-  friendly_name: Кухня Квадратики
+  friendly_name: "Кухня Квадратики"
   icon: mdi:square-medium
-light.lestnica_svetlyak: 
-  friendly_name: Лестница Светлячки
-  icon: mdi:checkbox-intermediate
-light.led1_ch2:
-  friendly_name: Зал Ниша
+
+# Коридор Свет
+light.koridor_1_kvardrat_vhod:
+  friendly_name: "Коридор Вход"
+  icon: mdi:square-outline
+light.koridor_1_kvardrat_server:
+  friendly_name: "Коридор Серверная"
+  icon: mdi:square-outline
+light.led2_ch2:
+  friendly_name: "Коридор Подсветка"
   icon: mdi:led-strip-variant
+
+# Санузлы Свет
+light.sanuzel_1:
+  friendly_name: "Санузел 1"
+  icon: mdi:paper-roll
+light.sanuzel_2:
+  friendly_name: "Санузел 2"
+  icon: mdi:paper-roll
+light.led1_ch1:
+  friendly_name: "Санузел 1 Зеркало"
+  icon: mdi:mirror-rectangle
+light.led1_ch3:
+  friendly_name: "Санузел 2 Зеркало"
+  icon: mdi:mirror-rectangle
+
+# Лестница и Прочее Свет
+light.lestnica_novodvor:
+  friendly_name: "Лестница Новодворский"
+  icon: mdi:square-outline
+light.lestnica_svetlyak:
+  friendly_name: "Лестница Светлячки"
+  icon: mdi:stairs
+light.servernaya:
+  friendly_name: "Серверная"
+  icon: mdi:square-outline
+
+# Закомментированные примеры (сохранены)
 # light.sanuzel_2_zerkalo:
 #   friendly_name: Санузел 2 Зеркало
 # light.kuhnya_diod:
@@ -88,134 +126,317 @@ light.led1_ch2:
 # light.sanuzel_1_zerkalo:
 #   friendly_name: Санузел 1 Зеркало
 
+# ===================================
+# ВЕНТИЛЯТОРЫ
+# ===================================
 
-
+# Санузлы Вентиляторы
 fan.sanuzel_1:
-  friendly_name: Санузел 1 
+  friendly_name: "Санузел 1"
+  icon: mdi:fan
 fan.sanuzel_2:
-  friendly_name: Санузел 2 
+  friendly_name: "Санузел 2"
+  icon: mdi:fan
 
+# ===================================
+# ДВЕРИ И ДАТЧИКИ
+# ===================================
+
+# Двери
 binary_sensor.sanuzel_1_dver:
-  friendly_name: Санузел 1 
+  friendly_name: "Санузел 1"
 binary_sensor.sanuzel_2_dver:
-  friendly_name: Санузел 2 
+  friendly_name: "Санузел 2"
 binary_sensor.garderob_dver:
-  friendly_name: Гардероб
+  friendly_name: "Гардероб"
 binary_sensor.spalnya_dver:
-  friendly_name: Спальня
+  friendly_name: "Спальня"
 binary_sensor.detskaya_dver:
-  friendly_name: Детская
+  friendly_name: "Детская"
 binary_sensor.servernaya_dver:
-  friendly_name: Серверная
+  friendly_name: "Серверная"
 binary_sensor.vhod_dver:
-  friendly_name: Входная дверь
+  friendly_name: "Входная дверь"
 
+# Освещённость и Безопасность
 binary_sensor.day_night:
-  friendly_name: Освещенность
+  friendly_name: "Освещенность"
+  icon: mdi:weather-sunny
 binary_sensor.signashka_safety:
-  friendly_name: Сигнализация
- 
+  friendly_name: "Сигнализация"
+  icon: mdi:shield-home
+
+# Движение
 binary_sensor.lestnica_motion:
-  friendly_name: Лестница
+  friendly_name: "Лестница"
+  icon: mdi:motion-sensor
 binary_sensor.koridor_1_motion:
-  friendly_name: Коридор
+  friendly_name: "Коридор"
+  icon: mdi:motion-sensor
 binary_sensor.zal_motion:
-  friendly_name: Зал
+  friendly_name: "Зал"
+  icon: mdi:motion-sensor
 binary_sensor.detskaya_motion:
-  friendly_name: Детская
+  friendly_name: "Детская"
+  icon: mdi:motion-sensor
 binary_sensor.spalnya_motion:
-  friendly_name: Спальня
-sensor.sanuzel2_climate_humidity:
-  friendly_name: Санузел 2 Влажность
-sensor.sanuzel1_climate_humidity:
-  friendly_name: Санузел 1 Влажность
+  friendly_name: "Спальня"
+  icon: mdi:motion-sensor
 
-# Климатическая техника  
+# ===================================
+# КЛИМАТ
+# ===================================
+
+# Кондиционеры
 climate.spalnya_ac:
-  friendly_name: Кондиционер
-switch.spalnya_ac_lights:
-  friendly_name: ac Индикация
-switch.spalnya_ac_air:
-  friendly_name: ac Ионизация
-switch.spalnya_ac_quiet:
-  friendly_name: ac Тихий режим
-switch.spalnya_ac_x_fan:
-  friendly_name: ac Самоочистка
-switch.spalnya_ac_beeper:
-  friendly_name: ac Звук управления
-#  
+  friendly_name: "Кондиционер"
+  icon: mdi:air-conditioner
 climate.detskaya_ac:
-  friendly_name: Кондиционер
-switch.detskaya_ac_lights:
-  friendly_name: ac Индикация
-switch.detskaya_ac_air:
-  friendly_name: ac Ионизация
-switch.detskaya_ac_quiet:
-  friendly_name: ac Тихий режим
-switch.detskaya_ac_x_fan:
-  friendly_name: ac Самоочистка
-switch.detskaya_ac_beeper:
-  friendly_name: ac Звук управления
-# 
+  friendly_name: "Кондиционер"
+  icon: mdi:air-conditioner
 climate.zal_ac:
-  friendly_name: Кондиционер
+  friendly_name: "Кондиционер"
+  icon: mdi:air-conditioner
+
+sensor.climate_sensor_sanuzel2_temperature:
+  friendly_name: "Температура"
+sensor.climate_sensor_sanuzel1_humidity:
+  friendly_name: "Влажность"
+sensor.climate_sensor_sanuzel2_humidity:
+  friendly_name: "Влажность"
+  
+# Опции кондиционеров (переключатели)
+switch.spalnya_ac_lights:
+  friendly_name: "ac Индикация"
+  icon: mdi:led-outline
+switch.spalnya_ac_air:
+  friendly_name: "ac Ионизация"
+  icon: mdi:weather-windy
+switch.spalnya_ac_quiet:
+  friendly_name: "ac Тихий режим"
+  icon: mdi:volume-off
+switch.spalnya_ac_x_fan:
+  friendly_name: "ac Самоочистка"
+  icon: mdi:fan-auto
+switch.spalnya_ac_beeper:
+  friendly_name: "ac Звук управления"
+  icon: mdi:volume-high
+
+switch.detskaya_ac_lights:
+  friendly_name: "ac Индикация"
+  icon: mdi:led-outline
+switch.detskaya_ac_air:
+  friendly_name: "ac Ионизация"
+  icon: mdi:weather-windy
+switch.detskaya_ac_quiet:
+  friendly_name: "ac Тихий режим"
+  icon: mdi:volume-off
+switch.detskaya_ac_x_fan:
+  friendly_name: "ac Самоочистка"
+  icon: mdi:fan-auto
+switch.detskaya_ac_beeper:
+  friendly_name: "ac Звук управления"
+  icon: mdi:volume-high
+
 switch.zal_ac_lights:
-  friendly_name: ac Индикация
+  friendly_name: "ac Индикация"
+  icon: mdi:led-outline
 switch.zal_ac_air:
-  friendly_name: ac Ионизация
+  friendly_name: "ac Ионизация"
+  icon: mdi:weather-windy
 switch.zal_ac_quiet:
-  friendly_name: ac Тихий режим
+  friendly_name: "ac Тихий режим"
+  icon: mdi:volume-off
 switch.zal_ac_x_fan:
-  friendly_name: ac Самоочистка
+  friendly_name: "ac Самоочистка"
+  icon: mdi:fan-auto
 switch.zal_ac_beeper:
-  friendly_name: ac Звук управления
-  
+  friendly_name: "ac Звук управления"
+  icon: mdi:volume-high
+
+# ===================================
+# СИСТЕМНЫЕ УСТРОЙСТВА
+# ===================================
+
+# Тёплый пол
 switch.system_teply_pol:
-  friendly_name:  Теплый пол
+  friendly_name: "Система Тёплый пол"
   icon: mdi:radiator
+
+# Подсветка системная
 switch.system_diod:
-  friendly_name:  Питание LED-системы
-  icon: mdi:led-strip
-switch.system_color:
-  friendly_name:  Шкаф цветной
-  icon: mdi:lightbulb-spot
-# Розетки 
-switch.shelly_plug_shelly_plug_relay:
-  friendly_name:  Розетка Елка
-  icon: mdi:pine-tree
-switch.rozetka_girlyanda:
-  friendly_name:  Розетка Гирлянда
-  icon: mdi:pine-tree
+  friendly_name: "Система Диод"
+  icon: mdi:power
 
-  
-  
-  
-  
-#Телевизоры
-media_player.samsung_spalnia_ue43ru7470uxua:
-  friendly_name:  TV Спальня
+# ===================================
+# РОЗЕТКИ
+# ===================================
+
+switch.roz_sanuzel_1:
+  friendly_name: "Розетка Санузел 1"
+  icon: mdi:power-socket-eu
+switch.roz_sanuzel_2:
+  friendly_name: "Розетка Санузел 2"
+  icon: mdi:power-socket-eu
+switch.roz_spalnya:
+  friendly_name: "Розетка Спальня"
+  icon: mdi:power-socket-eu
+switch.roz_zal:
+  friendly_name: "Розетка Зал"
+  icon: mdi:power-socket-eu
+switch.roz_kuhnya:
+  friendly_name: "Розетка Кухня"
+  icon: mdi:power-socket-eu
+switch.roz_detskaya:
+  friendly_name: "Розетка Детская"
+  icon: mdi:power-socket-eu
+switch.roz_servernaya:
+  friendly_name: "Розетка Серверная"
+  icon: mdi:power-socket-eu
+
+# ===================================
+# ШТОРЫ
+# ===================================
+
+# Детская Шторы
+binary_sensor.curtains_sensor_detskaya_contact:  
+  friendly_name: "Положение штор (детская)"
+  device_class: window
+  icon: mdi:curtains
+
+light.detskaya_shtor_open:
+  friendly_name: "Открыть шторы (детская)"
+  icon: mdi:arrow-up-bold
+
+light.detskaya_shtor_close:
+  friendly_name: "Закрыть шторы (детская)"
+  icon: mdi:arrow-down-bold
+
+# Кухня Шторы
+binary_sensor.curtains_sensor_kuhnya_contact:  
+  friendly_name: "Положение штор (кухня)"
+  device_class: window
+  icon: mdi:curtains
+
+light.kuhnya_shtor_open:
+  friendly_name: "Открыть шторы (кухня)"
+  icon: mdi:arrow-up-bold
+
+light.kuhnya_shtor_close:
+  friendly_name: "Закрыть шторы (кухня)"
+  icon: mdi:arrow-down-bold
+
+# Спальня Шторы
+binary_sensor.curtains_sensor_spalnya_contact:
+  friendly_name: "Положение штор (спальня)"
+  device_class: window
+  icon: mdi:curtains
+
+light.spal_shtor_open:
+  friendly_name: "Открыть шторы (спальня)"
+  icon: mdi:arrow-up-bold
+
+light.spal_shtor_close:
+  friendly_name: "Закрыть шторы (спальня)"
+  icon: mdi:arrow-down-bold
+
+# Зал Шторы
+binary_sensor.curtains_sensor_zal_contact:  
+  friendly_name: "Положение штор (зал)"
+  device_class: window
+  icon: mdi:curtains
+
+light.zal_shtor_open:
+  friendly_name: "Открыть шторы (зал)"
+  icon: mdi:arrow-up-bold
+
+light.zal_shtor_close:
+  friendly_name: "Закрыть шторы (зал)"
+  icon: mdi:arrow-down-bold
+
+# ===================================
+# ТЕЛЕВИЗОРЫ
+# ===================================
+
+media_player.tv_zal:
+  friendly_name: "Телевизор Зал"
   icon: mdi:television
- 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
-  
-    
+media_player.tv_spalnya:
+  friendly_name: "Телевизор Спальня"
+  icon: mdi:television
 
+media_player.tv_detskaya:
+  friendly_name: "Телевизор Детская"
+  icon: mdi:television
 
+# ===================================
+# ПРОЧИЕ ДАТЧИКИ И МОНИТОРИНГ
+# ===================================
+
+sensor.backup_last_successful_automatic_backup:
+  friendly_name: "Последняя резервная копия"
+  icon: mdi:database-clock
+
+sensor.local_ip:
+  friendly_name: "Локальный IP-адрес"
+  icon: mdi:lan-connect
+
+# ===================================
+# СЕРВИСНЫЕ ПЕРЕКЛЮЧАТЕЛИ
+# ===================================
+# Эти сущности используются для синхронизации состояний
+# в автоматизациях и сценариях. Скрыты в интерфейсе.
+
+switch.detskaya_color:
+  friendly_name: "Детская Цвет"
+#  icon: mdi:palette
+  hidden: true
+
+switch.detskaya_diod:
+  friendly_name: "Детская Диод"
+#  icon: mdi:led-strip-variant
+  hidden: true
+
+switch.sanuzel_1_zerkalo:
+  friendly_name: "Санузел 1 Зеркало"
+#  icon: mdi:mirror-rectangle
+  hidden: true
+
+switch.sanuzel_2_zerkalo:
+  friendly_name: "Санузел 2 Зеркало"
+#  icon: mdi:mirror-rectangle
+  hidden: true
+
+switch.spalnya_diod:
+  friendly_name: "Спальня Диод"
+#  icon: mdi:led-strip-variant
+  hidden: true
+
+switch.zal_nisha:
+  friendly_name: "Зал Ниша"
+#  icon: mdi:led-strip-variant
+  hidden: true
   
+switch.shelly_plug_shelly_plug_relay:
+  icon: mdi:power-socket-eu
+  friendly_name: "Розетка Елка"
+  
+switch.rozetka_girlyanda:
+  icon: mdi:power-socket-eu
+  friendly_name: "Розетка Гирлянда"
+  
+binary_sensor.door_sensor_balkon1_contact: 
+  friendly_name:  Дверь Балкона 1  
+  
+binary_sensor.door_sensor_balkon2_contact:  
+  friendly_name:  Дверь Балкона 2  
+
+# ===================================
+# Камеры
+# ===================================  
+camera.hikvision_ds_2cd2163g0_is_mainstream:  
+  friendly_name:  Теплопункт
+# ===================================
+# КОНЕЦ ФАЙЛА
+# ===================================
