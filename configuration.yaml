@@ -24,16 +24,16 @@ homeassistant:
 shell_command:
   ha_gitpush: "/bin/bash /config/ha_gitpush.sh"
 
-panel_custom:
-  - name: server_state
-    sidebar_title: 'System'
-    sidebar_icon: mdi:server
-    js_url: /api/hassio/app/entrypoint.js
-    url_path: 'hassio/system'
-    embed_iframe: true
-    require_admin: true
-    config:
-      ingress: core_configurator
+# panel_custom:
+#   - name: server_state
+#     sidebar_title: 'System'
+#     sidebar_icon: mdi:server
+#     js_url: /api/hassio/app/entrypoint.js
+#     url_path: 'hassio/system'
+#     embed_iframe: true
+#     require_admin: true
+#     config:
+#       ingress: core_configurator
 
 recorder:
   db_url: mysql://homeassistant:AmYmyDFnL5@core-mariadb/homeassistant?charset=utf8mb4
