@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23.93,
-        "humidity": 62.13,
-        "pressure": 996.4,
+        "temperature": 23.71,
+        "humidity": 59.26,
+        "pressure": 991.4,
         "linkquality": 142,
         "voltage": 3055,
         "battery": 100,
@@ -10,9 +10,9 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 109,
-        "temperature": 24.44,
-        "humidity": 60.76,
-        "pressure": 998.6,
+        "temperature": 24.19,
+        "humidity": 57.87,
+        "pressure": 993.8,
         "voltage": 2935,
         "battery": 57,
         "power_outage_count": 239
@@ -21,7 +21,7 @@
         "linkquality": 174,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 26,
+        "device_temperature": 27,
         "power_outage_count": 128,
         "trigger_count": 0,
         "contact": true
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 226,
+        "voltage": 229,
         "linkquality": 91,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -38,19 +38,19 @@
         "child_lock": "UNLOCK"
     },
     "0x00158d00087b8978": {
-        "humidity": 67.96,
-        "pressure": 998,
+        "humidity": 67.2,
+        "pressure": 993.3,
         "linkquality": 58,
-        "temperature": 23.34,
+        "temperature": 23.29,
         "voltage": 2975,
         "battery": 83,
         "power_outage_count": 167
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 116,
-        "temperature": 23.97,
-        "humidity": 74.58,
-        "pressure": 997.6,
+        "temperature": 23.54,
+        "humidity": 67.64,
+        "pressure": 992.6,
         "voltage": 3065,
         "battery": 100,
         "power_outage_count": 44899
@@ -69,7 +69,7 @@
         "linkquality": 65,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 28,
+        "device_temperature": 29,
         "power_outage_count": 36,
         "trigger_count": 0
     },
