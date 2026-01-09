@@ -59,7 +59,7 @@ fan_toilet2_control:
       trigger:
         - platform: numeric_state
           entity_id: sensor.climate_sensor_sanuzel2_humidity
-          below: 60
+          below: 65
           for: "00:02:00"
       condition:
         - condition: state
