@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 22.69,
-        "humidity": 60.17,
-        "pressure": 1012.6,
+        "temperature": 22.65,
+        "humidity": 59.79,
+        "pressure": 1004.1,
         "linkquality": 116,
         "voltage": 3055,
         "battery": 100,
@@ -10,18 +10,18 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 131,
-        "temperature": 24.14,
-        "humidity": 54.25,
-        "pressure": 1014.7,
+        "temperature": 23.46,
+        "humidity": 55.75,
+        "pressure": 1006.4,
         "voltage": 2885,
         "battery": 23,
-        "power_outage_count": 1105
+        "power_outage_count": 1131
     },
     "0x00158d0004448bae": {
         "linkquality": 182,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 23,
+        "device_temperature": 24,
         "power_outage_count": 128,
         "trigger_count": 0,
         "contact": true
@@ -38,25 +38,25 @@
         "child_lock": "UNLOCK"
     },
     "0x00158d00087b8978": {
-        "humidity": 65.45,
-        "pressure": 1014.5,
+        "humidity": 62.75,
+        "pressure": 1006.2,
         "linkquality": 72,
-        "temperature": 22.23,
+        "temperature": 22.5,
         "voltage": 2975,
         "battery": 83,
         "power_outage_count": 167
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 120,
-        "temperature": 22.52,
-        "humidity": 69.58,
-        "pressure": 1013.9,
-        "voltage": 3065,
+        "temperature": 22.1,
+        "humidity": 67.34,
+        "pressure": 1005.5,
+        "voltage": 3055,
         "battery": 100,
         "power_outage_count": 44899
     },
     "0x00158d0003f1b455": {
-        "contact": false,
+        "contact": true,
         "voltage": 3015,
         "battery": 100,
         "device_temperature": 33,
@@ -67,20 +67,20 @@
     "0x00158d000775bb78": {
         "contact": false,
         "linkquality": 47,
-        "voltage": 3005,
+        "voltage": 3015,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 28,
         "power_outage_count": 36,
         "trigger_count": 0
     },
     "0x00158d00075f766d": {
         "linkquality": 10,
-        "contact": false,
+        "contact": true,
         "voltage": 3035,
         "battery": 100,
         "device_temperature": 29,
         "power_outage_count": 16,
-        "trigger_count": 1
+        "trigger_count": 0
     },
     "0x00158d00075f7472": {
         "contact": false,
@@ -96,7 +96,7 @@
         "voltage": 3025,
         "battery": 100,
         "device_temperature": 21,
-        "power_outage_count": 62,
+        "power_outage_count": 64,
         "trigger_count": 0,
         "contact": true
     }
