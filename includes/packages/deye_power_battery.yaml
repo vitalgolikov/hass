@@ -3,7 +3,7 @@ my_deye_power_battery:
 
     # === 1. Электричество пропало (убраны лишние показатели) ===
     - id: a_power_deye_grid_off
-      alias: "a_power_deye_grid_off"
+      alias: a_power_deye_grid_off
       initial_state: true
       mode: single
       trigger:
@@ -24,7 +24,9 @@ my_deye_power_battery:
             nowts: "{{ now().strftime(\"%H:%M' %d.%m\") }}"
         - service: telegram_bot.send_message
           data:
-            target: [374673383, 496868345]
+            target:
+              - 374673383
+              - 496868345
             message: |-
               🚨 Свет пропал
               {% if vbat %}🔋 Напряжение АКБ: {{ vbat }} В{% endif %}
@@ -33,7 +35,7 @@ my_deye_power_battery:
 
     # === 2. Электричество восстановлено (добавлено напряжение сети L1) ===
     - id: a_power_deye_grid_on
-      alias: "a_power_deye_grid_on"
+      alias: a_power_deye_grid_on
       initial_state: true
       mode: single
       trigger:
@@ -45,12 +47,14 @@ my_deye_power_battery:
       action:
         - delay: "00:00:05"
         - variables:
-            cap: "{{ states('input_number.battery_capacity_ah')|float(120) }}"
-            dur_s: "{{ (as_timestamp(trigger.to_state.last_changed) - as_timestamp(trigger.from_state.last_changed))|int(0) }}"
-            h: "{{ (dur_s // 3600)|int }}"
-            m: "{{ ((dur_s % 3600) // 60)|int }}"
-            I: "{{ states('sensor.deye_battery_current')|float(0) }}"
-            i_abs: "{{ (I|abs)|round(2) }}"
+            cap: "{{ states('input_number.battery_capacity_ah') | float(120) }}"
+            dur_s: >-
+              {{ (as_timestamp(trigger.to_state.last_changed)
+               - as_timestamp(trigger.from_state.last_changed)) | int(0) }}
+            h: "{{ (dur_s // 3600) | int }}"
+            m: "{{ ((dur_s % 3600) // 60) | int }}"
+            I: "{{ states('sensor.deye_battery_current') | float(0) }}"
+            i_abs: "{{ (I | abs) | round(2) }}"
             vbat: >-
               {% set v = states('sensor.deye_battery_voltage') %}
               {{ v if v not in ['unknown','unavailable',''] else '' }}
@@ -59,7 +63,10 @@ my_deye_power_battery:
               {{ l if l not in ['unknown','unavailable',''] else '' }}
             grid_v: >-
               {% set g = states('sensor.deye_grid_l1_voltage') %}
-              {{ g if g not in ['unknown','unavailable',''] else '' }}   # напряжение сети L1
+              {{ g if g not in ['unknown','unavailable',''] else '' }}
+            batt_pct: >-
+              {% set b = states('sensor.deye_battery') %}
+              {{ b if b not in ['unknown','unavailable',''] else '' }}
             nowts: "{{ now().strftime(\"%H:%M' %d.%m\") }}"
         - service: input_number.set_value
           target:
@@ -68,11 +75,14 @@ my_deye_power_battery:
             value: "{{ cap }}"
         - service: telegram_bot.send_message
           data:
-            target: [374673383, 496868345]
+            target:
+              - 374673383
+              - 496868345
             message: |-
               ✅ Свет восстановлен
-              ⏱ Отключение длилось: {{ h }} ч {{ '%02d'|format(m) }} мин
+              ⏱ Отключение длилось: {{ h }} ч {{ '%02d' | format(m) }} мин
               🔌 Ток сейчас: {{ i_abs }} А
+              {% if batt_pct %}🪫 Остаток % АКБ: {{ batt_pct }} %{% endif %}
               {% if grid_v %}⚡ Напряжение сети (L1): {{ grid_v }} В{% endif %}
               {% if vbat %}🔋 Напряжение АКБ: {{ vbat }} В{% endif %}
               {% if load_p %}⚙️ Нагрузка: {{ load_p }} Вт{% endif %}
