@@ -24,7 +24,7 @@ my_deye_power_battery:
             nowts: "{{ now().strftime(\"%H:%M' %d.%m\") }}"
         - service: telegram_bot.send_message
           data:
-            target:
+            chat_id:
               - 374673383
               - 496868345
             message: |-
@@ -75,7 +75,7 @@ my_deye_power_battery:
             value: "{{ cap }}"
         - service: telegram_bot.send_message
           data:
-            target:
+            chat_id:
               - 374673383
               - 496868345
             message: |-
