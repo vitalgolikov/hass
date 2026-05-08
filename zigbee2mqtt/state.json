@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23.95,
-        "humidity": 43.24,
-        "pressure": 988.8,
+        "temperature": 24.5,
+        "humidity": 50.25,
+        "pressure": 991.1,
         "linkquality": 102,
         "voltage": 3075,
         "battery": 100,
@@ -21,16 +21,16 @@
         "linkquality": 182,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 27,
+        "device_temperature": 28,
         "power_outage_count": 845,
         "trigger_count": 0,
-        "contact": false
+        "contact": true
     },
     "0x84ba20fffe6ac209": {
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 236,
+        "voltage": 225,
         "linkquality": 80,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,24 +48,24 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 105,
-        "temperature": 24.07,
-        "humidity": 60.99,
-        "pressure": 990.2,
+        "temperature": 24.37,
+        "humidity": 57.41,
+        "pressure": 992.4,
         "voltage": 3075,
         "battery": 100,
         "power_outage_count": 44899
     },
     "0x00158d0003f1b455": {
-        "contact": true,
+        "contact": false,
         "voltage": 3005,
         "battery": 100,
-        "device_temperature": 32,
+        "device_temperature": 33,
         "power_outage_count": 66,
         "trigger_count": 0,
         "linkquality": 142
     },
     "0x00158d000775bb78": {
-        "contact": false,
+        "contact": true,
         "linkquality": 80,
         "voltage": 3015,
         "battery": 100,
@@ -78,7 +78,7 @@
         "contact": true,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 27,
+        "device_temperature": 28,
         "power_outage_count": 16,
         "trigger_count": 0
     },
@@ -95,7 +95,7 @@
         "linkquality": 58,
         "voltage": 3035,
         "battery": 100,
-        "device_temperature": 25,
+        "device_temperature": 26,
         "power_outage_count": 76,
         "trigger_count": 0,
         "contact": true
