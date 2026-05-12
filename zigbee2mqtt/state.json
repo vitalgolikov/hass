@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 24.81,
-        "humidity": 53.03,
-        "pressure": 990.2,
+        "temperature": 25.26,
+        "humidity": 56.67,
+        "pressure": 983.1,
         "linkquality": 102,
         "voltage": 3075,
         "battery": 100,
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 234,
+        "voltage": 231,
         "linkquality": 80,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,10 +48,10 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 105,
-        "temperature": 25.48,
-        "humidity": 66.88,
-        "pressure": 991.5,
-        "voltage": 3085,
+        "temperature": 26.11,
+        "humidity": 66.13,
+        "pressure": 984.4,
+        "voltage": 3075,
         "battery": 100,
         "power_outage_count": 44899
     },
@@ -65,11 +65,11 @@
         "linkquality": 142
     },
     "0x00158d000775bb78": {
-        "contact": false,
+        "contact": true,
         "linkquality": 80,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 32,
+        "device_temperature": 31,
         "power_outage_count": 36,
         "trigger_count": 0
     },
@@ -78,7 +78,7 @@
         "contact": true,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 29,
+        "device_temperature": 28,
         "power_outage_count": 16,
         "trigger_count": 0
     },
@@ -86,7 +86,7 @@
         "contact": false,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 31,
         "power_outage_count": 1075,
         "trigger_count": 0,
         "linkquality": 102
@@ -95,9 +95,9 @@
         "linkquality": 58,
         "voltage": 3035,
         "battery": 100,
-        "device_temperature": 26,
+        "device_temperature": 24,
         "power_outage_count": 76,
         "trigger_count": 0,
-        "contact": true
+        "contact": false
     }
 }
