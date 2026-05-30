@@ -1,9 +1,9 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 25.78,
-        "humidity": 48.1,
-        "pressure": 982.4,
-        "linkquality": 120,
+        "temperature": 25.59,
+        "humidity": 49.82,
+        "pressure": 982.6,
+        "linkquality": 109,
         "voltage": 3075,
         "battery": 100,
         "power_outage_count": 2
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 230,
+        "voltage": 233,
         "linkquality": 69,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,9 +48,9 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 123,
-        "temperature": 25.8,
-        "humidity": 59.31,
-        "pressure": 983.9,
+        "temperature": 26.44,
+        "humidity": 50.25,
+        "pressure": 983.8,
         "voltage": 3085,
         "battery": 100,
         "power_outage_count": 44899
@@ -62,19 +62,19 @@
         "device_temperature": 33,
         "power_outage_count": 66,
         "trigger_count": 0,
-        "linkquality": 142
+        "linkquality": 149
     },
     "0x00158d000775bb78": {
         "contact": true,
-        "linkquality": 80,
+        "linkquality": 65,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 32,
+        "device_temperature": 31,
         "power_outage_count": 36,
         "trigger_count": 0
     },
     "0x00158d00075f766d": {
-        "linkquality": 58,
+        "linkquality": 14,
         "contact": true,
         "voltage": 3035,
         "battery": 100,
@@ -84,15 +84,15 @@
     },
     "0x00158d00075f7472": {
         "contact": false,
-        "voltage": 3015,
+        "voltage": 3025,
         "battery": 100,
-        "device_temperature": 32,
+        "device_temperature": 31,
         "power_outage_count": 1075,
         "trigger_count": 0,
-        "linkquality": 102
+        "linkquality": 105
     },
     "0x00158d000446de04": {
-        "linkquality": 58,
+        "linkquality": 54,
         "voltage": 3045,
         "battery": 100,
         "device_temperature": 25,
