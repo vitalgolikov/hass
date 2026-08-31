@@ -1,36 +1,36 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 26.63,
-        "humidity": 46.79,
-        "pressure": 995.5,
+        "temperature": 25.8,
+        "humidity": 37.9,
+        "pressure": 995.1,
         "linkquality": 116,
-        "voltage": 3075,
+        "voltage": 3065,
         "battery": 100,
         "power_outage_count": 2
     },
     "0x00158d0009cf9de3": {
         "linkquality": 160,
         "temperature": 27.59,
-        "humidity": 43.24,
-        "pressure": 997.3,
-        "voltage": 3045,
+        "humidity": 34.02,
+        "pressure": 997.2,
+        "voltage": 3055,
         "battery": 100,
         "power_outage_count": 145
     },
     "0x00158d0004448bae": {
         "linkquality": 174,
-        "voltage": 3035,
+        "voltage": 3045,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 25,
         "power_outage_count": 846,
         "trigger_count": 0,
-        "contact": true
+        "contact": false
     },
     "0x84ba20fffe6ac209": {
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 237,
+        "voltage": 234,
         "linkquality": 102,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -49,8 +49,8 @@
     "0x00158d0007d3a3a4": {
         "linkquality": 120,
         "temperature": 27.5,
-        "humidity": 52.25,
-        "pressure": 996.7,
+        "humidity": 37.44,
+        "pressure": 996.4,
         "voltage": 3085,
         "battery": 100,
         "power_outage_count": 44899
@@ -78,7 +78,7 @@
         "contact": false,
         "voltage": 3035,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 32,
         "power_outage_count": 16,
         "trigger_count": 0
     },
@@ -95,7 +95,7 @@
         "linkquality": 43,
         "voltage": 3045,
         "battery": 100,
-        "device_temperature": 28,
+        "device_temperature": 29,
         "power_outage_count": 76,
         "trigger_count": 0,
         "contact": false
