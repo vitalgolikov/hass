@@ -1,18 +1,18 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 26.87,
-        "humidity": 50.96,
-        "pressure": 984.8,
+        "temperature": 25.54,
+        "humidity": 46.02,
+        "pressure": 988.2,
         "linkquality": 98,
-        "voltage": 3075,
+        "voltage": 3065,
         "battery": 100,
         "power_outage_count": 2
     },
     "0x00158d0009cf9de3": {
         "linkquality": 145,
-        "temperature": 27.64,
-        "humidity": 48.23,
-        "pressure": 986.7,
+        "temperature": 27.47,
+        "humidity": 43.64,
+        "pressure": 990.3,
         "voltage": 3055,
         "battery": 100,
         "power_outage_count": 145
@@ -21,16 +21,16 @@
         "linkquality": 182,
         "voltage": 3035,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 28,
         "power_outage_count": 846,
         "trigger_count": 0,
-        "contact": true
+        "contact": false
     },
     "0x84ba20fffe6ac209": {
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 234,
+        "voltage": 233,
         "linkquality": 83,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,9 +48,9 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 131,
-        "temperature": 27,
-        "humidity": 49.78,
-        "pressure": 985.9,
+        "temperature": 26.94,
+        "humidity": 47.59,
+        "pressure": 989.8,
         "voltage": 3075,
         "battery": 100,
         "power_outage_count": 44899
@@ -86,7 +86,7 @@
         "contact": false,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 33,
+        "device_temperature": 32,
         "power_outage_count": 1075,
         "trigger_count": 0,
         "linkquality": 80
@@ -95,7 +95,7 @@
         "linkquality": 72,
         "voltage": 3045,
         "battery": 100,
-        "device_temperature": 27,
+        "device_temperature": 26,
         "power_outage_count": 76,
         "trigger_count": 0,
         "contact": false
