@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23.16,
-        "humidity": 52.61,
-        "pressure": 989.4,
+        "temperature": 24.06,
+        "humidity": 55.92,
+        "pressure": 984.9,
         "linkquality": 98,
         "voltage": 3065,
         "battery": 100,
@@ -10,9 +10,9 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 145,
-        "temperature": 26.17,
-        "humidity": 46.64,
-        "pressure": 991.2,
+        "temperature": 26.11,
+        "humidity": 50.06,
+        "pressure": 986.8,
         "voltage": 3045,
         "battery": 100,
         "power_outage_count": 145
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 230,
+        "voltage": 226,
         "linkquality": 83,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,16 +48,16 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 131,
-        "temperature": 26.81,
-        "humidity": 46.36,
-        "pressure": 990.9,
+        "temperature": 26.16,
+        "humidity": 52.63,
+        "pressure": 986.1,
         "voltage": 3075,
         "battery": 100,
         "power_outage_count": 44899
     },
     "0x00158d0003f1b455": {
-        "contact": true,
-        "voltage": 3025,
+        "contact": false,
+        "voltage": 3015,
         "battery": 100,
         "device_temperature": 33,
         "power_outage_count": 66,
@@ -65,7 +65,7 @@
         "linkquality": 109
     },
     "0x00158d000775bb78": {
-        "contact": false,
+        "contact": true,
         "linkquality": 80,
         "voltage": 3015,
         "battery": 100,
@@ -75,7 +75,7 @@
     },
     "0x00158d00075f766d": {
         "linkquality": 29,
-        "contact": true,
+        "contact": false,
         "voltage": 3035,
         "battery": 100,
         "device_temperature": 30,
@@ -86,7 +86,7 @@
         "contact": false,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 31,
         "power_outage_count": 1075,
         "trigger_count": 0,
         "linkquality": 80
