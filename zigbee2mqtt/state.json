@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23.48,
-        "humidity": 63.61,
-        "pressure": 993,
+        "temperature": 23.92,
+        "humidity": 64.84,
+        "pressure": 988,
         "linkquality": 98,
         "voltage": 3055,
         "battery": 100,
@@ -10,9 +10,9 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 160,
-        "temperature": 24.81,
-        "humidity": 63.13,
-        "pressure": 995.1,
+        "temperature": 25.18,
+        "humidity": 70.43,
+        "pressure": 990,
         "voltage": 3045,
         "battery": 100,
         "power_outage_count": 145
@@ -21,7 +21,7 @@
         "linkquality": 189,
         "voltage": 3025,
         "battery": 100,
-        "device_temperature": 25,
+        "device_temperature": 26,
         "power_outage_count": 856,
         "trigger_count": 0,
         "contact": true
@@ -30,7 +30,7 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 226,
+        "voltage": 232,
         "linkquality": 80,
         "state": "OFF",
         "power_outage_memory": "off",
@@ -48,15 +48,15 @@
     },
     "0x00158d0007d3a3a4": {
         "linkquality": 120,
-        "temperature": 24.36,
-        "humidity": 69.58,
-        "pressure": 994.4,
+        "temperature": 24.78,
+        "humidity": 70.83,
+        "pressure": 989.4,
         "voltage": 3065,
         "battery": 100,
         "power_outage_count": 44899
     },
     "0x00158d0003f1b455": {
-        "contact": true,
+        "contact": false,
         "voltage": 3015,
         "battery": 100,
         "device_temperature": 32,
@@ -65,7 +65,7 @@
         "linkquality": 116
     },
     "0x00158d000775bb78": {
-        "contact": false,
+        "contact": true,
         "linkquality": 80,
         "voltage": 3015,
         "battery": 100,
@@ -86,7 +86,7 @@
         "contact": false,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 30,
+        "device_temperature": 29,
         "power_outage_count": 1075,
         "trigger_count": 0,
         "linkquality": 98
