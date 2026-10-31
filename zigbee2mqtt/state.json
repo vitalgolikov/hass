@@ -1,8 +1,8 @@
 {
     "0x00158d0004465ae7": {
-        "temperature": 23,
-        "humidity": 53.8,
-        "pressure": 998.4,
+        "temperature": 23.16,
+        "humidity": 54.65,
+        "pressure": 992.1,
         "linkquality": 98,
         "voltage": 3045,
         "battery": 100,
@@ -10,15 +10,15 @@
     },
     "0x00158d0009cf9de3": {
         "linkquality": 160,
-        "temperature": 24,
-        "humidity": 63.05,
-        "pressure": 1000.4,
+        "temperature": 23.86,
+        "humidity": 54.25,
+        "pressure": 994.1,
         "voltage": 3055,
         "battery": 100,
         "power_outage_count": 145
     },
     "0x00158d0004448bae": {
-        "linkquality": 189,
+        "linkquality": 178,
         "voltage": 3025,
         "battery": 100,
         "device_temperature": 25,
@@ -30,8 +30,8 @@
         "energy": 0,
         "power": 0,
         "current": 0,
-        "voltage": 227,
-        "linkquality": 80,
+        "voltage": 229,
+        "linkquality": 54,
         "state": "OFF",
         "power_outage_memory": "off",
         "indicator_mode": "off",
@@ -47,16 +47,16 @@
         "power_outage_count": 167
     },
     "0x00158d0007d3a3a4": {
-        "linkquality": 120,
-        "temperature": 23.5,
-        "humidity": 61.59,
-        "pressure": 999.6,
+        "linkquality": 54,
+        "temperature": 23.59,
+        "humidity": 56.75,
+        "pressure": 993.5,
         "voltage": 3065,
         "battery": 100,
         "power_outage_count": 44899
     },
     "0x00158d0003f1b455": {
-        "contact": true,
+        "contact": false,
         "voltage": 3015,
         "battery": 100,
         "device_temperature": 30,
@@ -65,11 +65,11 @@
         "linkquality": 116
     },
     "0x00158d000775bb78": {
-        "contact": true,
+        "contact": false,
         "linkquality": 80,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 29,
+        "device_temperature": 31,
         "power_outage_count": 37,
         "trigger_count": 0
     },
