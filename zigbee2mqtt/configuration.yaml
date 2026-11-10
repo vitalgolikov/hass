@@ -68,3 +68,5 @@ devices:
     friendly_name: curtains_sensor_kuhnya
   '0x00158d000446de04':
     friendly_name: door_sensor_balkon2
+  '0x00158d000227a70e':
+    friendly_name: button_servernaya
