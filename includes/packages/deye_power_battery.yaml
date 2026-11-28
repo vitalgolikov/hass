@@ -1,89 +1,233 @@
+# Уведомления о пропадании/восстановлении сети (Deye) в Telegram.
+# Энергия АКБ: Ah × 51.2 В × (SOC − SOC отсечки) — значения из настроек инвертора.
+# Прогноз: по средней нагрузке за 15 мин (sensor.deye_load_power_avg_15m).
+# Предыдущая версия: includes/backup_deye_power_battery.yaml.bak
 my_deye_power_battery:
+
+  input_number:
+    power_outage_soc_start:
+      name: "Отключение: SOC АКБ в начале"
+      min: 0
+      max: 100
+      step: 1
+      unit_of_measurement: "%"
+      mode: box
+      icon: mdi:battery-clock
+    power_outage_load_kwh_start:
+      name: "Отключение: потребление на начало"
+      min: 0
+      max: 1000
+      step: 0.01
+      unit_of_measurement: kWh
+      mode: box
+      icon: mdi:counter
+
+  sensor:
+    - platform: statistics
+      name: deye_load_power_avg_15m
+      unique_id: deye_load_power_avg_15m
+      entity_id: sensor.deye_load_power
+      state_characteristic: mean
+      max_age:
+        minutes: 15
+      sampling_size: 2000
+      precision: 0
+    - platform: history_stats
+      name: deye_grid_outages_today
+      unique_id: deye_grid_outages_today
+      entity_id: binary_sensor.deye_grid
+      state: "off"
+      type: count
+      start: "{{ today_at() }}"
+      end: "{{ now() }}"
+    - platform: history_stats
+      name: deye_grid_offline_today
+      unique_id: deye_grid_offline_today
+      entity_id: binary_sensor.deye_grid
+      state: "off"
+      type: time
+      start: "{{ today_at() }}"
+      end: "{{ now() }}"
+
   automation:
 
-    # === 1. Электричество пропало (убраны лишние показатели) ===
+    # === 1. Свет пропал ===
     - id: a_power_deye_grid_off
-      alias: a_power_deye_grid_off
-      initial_state: true
+      alias: "Сеть: свет пропал"
       mode: single
-      trigger:
-        - platform: state
+      triggers:
+        - trigger: state
           entity_id: binary_sensor.deye_grid
           from: "on"
           to: "off"
           for: "00:00:10"
-      action:
-        - delay: "00:00:05"
+      actions:
+        - action: input_number.set_value
+          target: { entity_id: input_number.power_outage_soc_start }
+          data: { value: "{{ states('sensor.deye_battery') | float(0) }}" }
+        - action: input_number.set_value
+          target: { entity_id: input_number.power_outage_load_kwh_start }
+          data: { value: "{{ states('sensor.deye_today_load_consumption') | float(0) }}" }
         - variables:
-            vbat: >-
-              {% set v = states('sensor.deye_battery_voltage') %}
-              {{ v if v not in ['unknown','unavailable',''] else '' }}
-            load_p: >-
-              {% set l = states('sensor.load_power') %}
-              {{ l if l not in ['unknown','unavailable',''] else '' }}
-            nowts: "{{ now().strftime(\"%H:%M' %d.%m\") }}"
-        - service: telegram_bot.send_message
+            soc: "{{ states('sensor.deye_battery') | float(0) }}"
+            stop: "{{ states('number.deye_battery_shutdown_soc') | float(10) }}"
+            ah: "{{ states('number.deye_battery_capacity') | float(120) }}"
+            kwh: "{{ [ah * 51.2 * (soc - stop) / 100 / 1000, 0] | max | round(1) }}"
+            load: >-
+              {% set a = states('sensor.deye_load_power_avg_15m') | float(0) %}
+              {{ (a if a > 0 else states('sensor.deye_load_power') | float(0)) | round(0) }}
+            mins: "{{ (kwh * 1000 / load * 60) | int if load > 30 else -1 }}"
+            left_txt: >-
+              {% if mins < 0 %}нагрузка слишком мала для прогноза
+              {% else %}{{ mins // 60 }} ч {{ '%02d' | format(mins % 60) }} мин — примерно до {{ (now() + timedelta(minutes=mins)).strftime('%H:%M') }}{% endif %}
+            today_n: "{{ states('sensor.deye_grid_outages_today') | int(0) }}"
+            today_h: "{{ states('sensor.deye_grid_offline_today') | float(0) }}"
+            today_txt: "{{ (today_h | int) }} ч {{ '%02d' | format(((today_h * 60) | int) % 60) }} мин"
+        - action: telegram_bot.send_message
           data:
-            chat_id:
-              - 374673383
-              - 496868345
+            chat_id: ['374673383', '496868345']
+            parse_mode: html
             message: |-
-              🚨 Свет пропал
-              {% if vbat %}🔋 Напряжение АКБ: {{ vbat }} В{% endif %}
-              {% if load_p %}⚙️ Нагрузка: {{ load_p }} Вт{% endif %}
-              🕒 Время: {{ nowts }}
+              🔴 <b>Свет пропал</b> · {{ trigger.from_state.last_changed | as_local | as_timestamp | timestamp_custom('%H:%M, %d.%m') }}
 
-    # === 2. Электричество восстановлено (добавлено напряжение сети L1) ===
-    - id: a_power_deye_grid_on
-      alias: a_power_deye_grid_on
-      initial_state: true
+              🔋 Батарея: <b>{{ soc | int }}%</b> · ≈{{ kwh }} кВт·ч до отсечки ({{ stop | int }}%)
+              🏠 Нагрузка: {{ load | int }} Вт (средняя за 15 мин)
+              ⏳ Хватит на ≈<b>{{ left_txt }}</b>
+              ☀️ Солнце: {{ states('sensor.deye_pv_power') | int(0) }} Вт
+
+              📊 Сегодня: {{ today_n }}-е отключение{% if today_n > 1 %}, всего без света {{ today_txt }}{% endif %}
+
+    # === 2. Света нет — статус каждый час (без звука) ===
+    - id: a_power_deye_grid_off_hourly
+      alias: "Сеть: статус каждый час, пока света нет"
       mode: single
-      trigger:
-        - platform: state
+      triggers:
+        - trigger: time_pattern
+          minutes: "/1"
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.deye_grid
+          state: "off"
+        - condition: template
+          value_template: >
+            {% set m = ((now() - states.binary_sensor.deye_grid.last_changed).total_seconds() / 60) | int %}
+            {{ m >= 60 and m % 60 == 0 }}
+      actions:
+        - variables:
+            soc: "{{ states('sensor.deye_battery') | float(0) }}"
+            stop: "{{ states('number.deye_battery_shutdown_soc') | float(10) }}"
+            ah: "{{ states('number.deye_battery_capacity') | float(120) }}"
+            kwh: "{{ [ah * 51.2 * (soc - stop) / 100 / 1000, 0] | max | round(1) }}"
+            load: >-
+              {% set a = states('sensor.deye_load_power_avg_15m') | float(0) %}
+              {{ (a if a > 0 else states('sensor.deye_load_power') | float(0)) | round(0) }}
+            mins: "{{ (kwh * 1000 / load * 60) | int if load > 30 else -1 }}"
+            left_txt: >-
+              {% if mins < 0 %}нагрузка слишком мала для прогноза
+              {% else %}{{ mins // 60 }} ч {{ '%02d' | format(mins % 60) }} мин — примерно до {{ (now() + timedelta(minutes=mins)).strftime('%H:%M') }}{% endif %}
+            today_n: "{{ states('sensor.deye_grid_outages_today') | int(0) }}"
+            today_h: "{{ states('sensor.deye_grid_offline_today') | float(0) }}"
+            today_txt: "{{ (today_h | int) }} ч {{ '%02d' | format(((today_h * 60) | int) % 60) }} мин"
+            off_min: "{{ ((now() - states.binary_sensor.deye_grid.last_changed).total_seconds() / 60) | int }}"
+            soc0: "{{ states('input_number.power_outage_soc_start') | float(soc) }}"
+        - action: telegram_bot.send_message
+          data:
+            chat_id: ['374673383', '496868345']
+            parse_mode: html
+            disable_notification: true
+            message: |-
+              🟠 <b>Света нет уже {{ off_min // 60 }} ч {{ '%02d' | format(off_min % 60) }} мин</b>
+
+              🔋 {{ soc | int }}% ({{ (soc - soc0) | int }}% за отключение) · ≈{{ kwh }} кВт·ч
+              🏠 Нагрузка: {{ load | int }} Вт
+              ⏳ Осталось ≈{{ left_txt }}
+
+    # === 3. Батарея на исходе (30% и 15%) ===
+    - id: a_power_deye_battery_low
+      alias: "Сеть: батарея на исходе"
+      mode: queued
+      triggers:
+        - trigger: numeric_state
+          entity_id: sensor.deye_battery
+          below: 30
+          id: "30"
+        - trigger: numeric_state
+          entity_id: sensor.deye_battery
+          below: 15
+          id: "15"
+      conditions:
+        - condition: state
+          entity_id: binary_sensor.deye_grid
+          state: "off"
+      actions:
+        - variables:
+            soc: "{{ states('sensor.deye_battery') | float(0) }}"
+            stop: "{{ states('number.deye_battery_shutdown_soc') | float(10) }}"
+            ah: "{{ states('number.deye_battery_capacity') | float(120) }}"
+            kwh: "{{ [ah * 51.2 * (soc - stop) / 100 / 1000, 0] | max | round(1) }}"
+            load: >-
+              {% set a = states('sensor.deye_load_power_avg_15m') | float(0) %}
+              {{ (a if a > 0 else states('sensor.deye_load_power') | float(0)) | round(0) }}
+            mins: "{{ (kwh * 1000 / load * 60) | int if load > 30 else -1 }}"
+            left_txt: >-
+              {% if mins < 0 %}нагрузка слишком мала для прогноза
+              {% else %}{{ mins // 60 }} ч {{ '%02d' | format(mins % 60) }} мин — примерно до {{ (now() + timedelta(minutes=mins)).strftime('%H:%M') }}{% endif %}
+            today_n: "{{ states('sensor.deye_grid_outages_today') | int(0) }}"
+            today_h: "{{ states('sensor.deye_grid_offline_today') | float(0) }}"
+            today_txt: "{{ (today_h | int) }} ч {{ '%02d' | format(((today_h * 60) | int) % 60) }} мин"
+        - action: telegram_bot.send_message
+          data:
+            chat_id: ['374673383', '496868345']
+            parse_mode: html
+            message: |-
+              {{ '🆘' if trigger.id == '15' else '⚠️' }} <b>Батарея {{ soc | int }}%</b> — осталось ≈{{ left_txt }}
+              🏠 Нагрузка: {{ load | int }} Вт
+              Рекомендую отключить мощных потребителей: бойлер, кондиционеры, духовку.
+
+    # === 4. Свет восстановлен ===
+    - id: a_power_deye_grid_on
+      alias: "Сеть: свет восстановлен"
+      mode: single
+      triggers:
+        - trigger: state
           entity_id: binary_sensor.deye_grid
           from: "off"
           to: "on"
           for: "00:00:10"
-      action:
+      actions:
         - delay: "00:00:05"
         - variables:
-            cap: "{{ states('input_number.battery_capacity_ah') | float(120) }}"
-            dur_s: >-
-              {{ (as_timestamp(trigger.to_state.last_changed)
-               - as_timestamp(trigger.from_state.last_changed)) | int(0) }}
-            h: "{{ (dur_s // 3600) | int }}"
-            m: "{{ ((dur_s % 3600) // 60) | int }}"
-            I: "{{ states('sensor.deye_battery_current') | float(0) }}"
-            i_abs: "{{ (I | abs) | round(2) }}"
-            vbat: >-
-              {% set v = states('sensor.deye_battery_voltage') %}
-              {{ v if v not in ['unknown','unavailable',''] else '' }}
-            load_p: >-
-              {% set l = states('sensor.load_power') %}
-              {{ l if l not in ['unknown','unavailable',''] else '' }}
-            grid_v: >-
-              {% set g = states('sensor.deye_grid_l1_voltage') %}
-              {{ g if g not in ['unknown','unavailable',''] else '' }}
-            batt_pct: >-
-              {% set b = states('sensor.deye_battery') %}
-              {{ b if b not in ['unknown','unavailable',''] else '' }}
-            nowts: "{{ now().strftime(\"%H:%M' %d.%m\") }}"
-        - service: input_number.set_value
-          target:
-            entity_id: input_number.battery_remaining_ah
+            soc: "{{ states('sensor.deye_battery') | float(0) }}"
+            stop: "{{ states('number.deye_battery_shutdown_soc') | float(10) }}"
+            ah: "{{ states('number.deye_battery_capacity') | float(120) }}"
+            kwh: "{{ [ah * 51.2 * (soc - stop) / 100 / 1000, 0] | max | round(1) }}"
+            load: >-
+              {% set a = states('sensor.deye_load_power_avg_15m') | float(0) %}
+              {{ (a if a > 0 else states('sensor.deye_load_power') | float(0)) | round(0) }}
+            mins: "{{ (kwh * 1000 / load * 60) | int if load > 30 else -1 }}"
+            left_txt: >-
+              {% if mins < 0 %}нагрузка слишком мала для прогноза
+              {% else %}{{ mins // 60 }} ч {{ '%02d' | format(mins % 60) }} мин — примерно до {{ (now() + timedelta(minutes=mins)).strftime('%H:%M') }}{% endif %}
+            today_n: "{{ states('sensor.deye_grid_outages_today') | int(0) }}"
+            today_h: "{{ states('sensor.deye_grid_offline_today') | float(0) }}"
+            today_txt: "{{ (today_h | int) }} ч {{ '%02d' | format(((today_h * 60) | int) % 60) }} мин"
+            t_off: "{{ trigger.from_state.last_changed }}"
+            t_on: "{{ trigger.to_state.last_changed }}"
+            dur_s: "{{ (as_timestamp(trigger.to_state.last_changed) - as_timestamp(trigger.from_state.last_changed)) | int(0) }}"
+            soc0: "{{ states('input_number.power_outage_soc_start') | float(-1) }}"
+            used_kwh: "{{ [ah * 51.2 * (soc0 - soc) / 100 / 1000, 0] | max | round(1) if soc0 >= 0 else -1 }}"
+            load_kwh: "{{ states('sensor.deye_today_load_consumption') | float(0) - states('input_number.power_outage_load_kwh_start') | float(0) }}"
+            avg_w: "{{ (load_kwh * 1000 / (dur_s / 3600)) | int if load_kwh > 0 and dur_s > 300 else -1 }}"
+        - action: telegram_bot.send_message
           data:
-            value: "{{ cap }}"
-        - service: telegram_bot.send_message
-          data:
-            chat_id:
-              - 374673383
-              - 496868345
+            chat_id: ['374673383', '496868345']
+            parse_mode: html
             message: |-
-              ✅ Свет восстановлен
-              ⏱ Отключение длилось: {{ h }} ч {{ '%02d' | format(m) }} мин
-              🔌 Ток сейчас: {{ i_abs }} А
-              {% if batt_pct %}🪫 Остаток % АКБ: {{ batt_pct }} %{% endif %}
-              {% if grid_v %}⚡ Напряжение сети (L1): {{ grid_v }} В{% endif %}
-              {% if vbat %}🔋 Напряжение АКБ: {{ vbat }} В{% endif %}
-              {% if load_p %}⚙️ Нагрузка: {{ load_p }} Вт{% endif %}
-              🕒 Время: {{ nowts }}
+              🟢 <b>Свет восстановлен</b> · {{ t_on | as_timestamp | timestamp_custom('%H:%M, %d.%m') }}
+
+              ⏱ Света не было: <b>{{ dur_s // 3600 }} ч {{ '%02d' | format((dur_s % 3600) // 60) }} мин</b> ({{ t_off | as_timestamp | timestamp_custom('%H:%M') }} → {{ t_on | as_timestamp | timestamp_custom('%H:%M') }})
+              🔋 Батарея: {% if soc0 >= 0 %}{{ soc0 | int }}% → {{ soc | int }}%{% if used_kwh > 0 %} · израсходовано ≈{{ used_kwh }} кВт·ч{% endif %}{% else %}{{ soc | int }}%{% endif %}
+              {% if avg_w > 0 %}🏠 Средняя нагрузка за отключение: {{ avg_w }} Вт
+              {% endif %}⚡ Сеть L1: {{ states('sensor.deye_grid_l1_voltage') | float(0) | round(0) | int }} В · {{ states('sensor.deye_grid_frequency') }} Гц
+
+              📊 Сегодня: {{ today_n }} {{ 'отключение' if today_n == 1 else ('отключения' if today_n in [2,3,4] else 'отключений') }}, всего {{ today_txt }} без света

@@ -70,3 +70,7 @@ devices:
     friendly_name: door_sensor_balkon2
   '0x00158d000227a70e':
     friendly_name: button_servernaya
+  '0x04cd15fffe3bb87f':
+    friendly_name: trv_kuhnya
+  '0x04cd15fffe7a594e':
+    friendly_name: trv_zal

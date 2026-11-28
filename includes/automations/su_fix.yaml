@@ -1,17 +1,56 @@
-# ✅ Вариант 2 — напрямую в automations.yaml (корень — список):
-- alias: "Санузел 2 — автоотключение при наступлении светла"
-  description: "При включении датчика освещенности (день) выключает свет в Санузле 2 через 1 секунду"
-  mode: single
-  trigger:
-    - platform: state
+# Санузел 2: PLC ложно включает свет в момент смены binary_sensor.day_night на "день".
+# Свет может появиться в HA как ДО, так и ПОСЛЕ смены датчика (разница 0–15 с из-за опроса modbus),
+# поэтому автоматизация слушает оба события и гасит свет в окне 90 с после рассвета.
+- id: sanuzel_2_auto_off_at_dawn
+  alias: "Санузел 2 — автоотключение при наступлении светла"
+  description: >
+    Гасит ложное включение света в Санузле 2 от PLC при переходе датчика освещённости в "день".
+    Срабатывает, если свет горит и день наступил не более 90 с назад.
+  mode: restart
+  triggers:
+    - trigger: state
       entity_id: binary_sensor.day_night
+      from: "off"
       to: "on"
-  condition:
-    - condition: state
+      id: dawn
+    - trigger: state
       entity_id: light.sanuzel_2
+      from: "off"
+      to: "on"
+      id: light_on
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.day_night
       state: "on"
-  action:
+    - condition: template
+      value_template: >
+        {{ (now() - states.binary_sensor.day_night.last_changed).total_seconds() < 90 }}
+  actions:
+    # если первым пришёл "рассвет", а свет PLC ещё не отрапортовал — подождать до 30 с
+    - if:
+        - condition: state
+          entity_id: light.sanuzel_2
+          state: "off"
+      then:
+        - wait_for_trigger:
+            - trigger: state
+              entity_id: light.sanuzel_2
+              to: "on"
+          timeout: "00:00:30"
+          continue_on_timeout: false
     - delay: "00:00:01"
-    - service: light.turn_off
-      target:
-        entity_id: light.sanuzel_2
+    # выключаем с проверкой, до 3 попыток
+    - repeat:
+        sequence:
+          - action: light.turn_off
+            target:
+              entity_id: light.sanuzel_2
+          - delay: "00:00:03"
+          - action: homeassistant.update_entity
+            target:
+              entity_id: light.sanuzel_2
+            continue_on_error: true
+          - delay: "00:00:02"
+        until:
+          - condition: template
+            value_template: "{{ is_state('light.sanuzel_2','off') or repeat.index >= 3 }}"

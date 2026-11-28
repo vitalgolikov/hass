@@ -1,58 +1,62 @@
-# Автоуведомление о старте HASS в Telegram + локальное уведомление
-# Формат:
-# ✅ Home Assistant запущен
-# 🕒 Время запуска: 13:56:02, 26.10.2025
-# 🗄️ Последняя резервная копия: 02:45  28.10
-#
-# 🔥 Тёплый пол: ВКЛЮЧЕН
-# 💡 Диодное освещение: ВКЛЮЧЕНО
+# Уведомление о старте Home Assistant: Telegram (HTML) + уведомление в HA.
+# Перед отправкой включает Диод и Тёплый пол (script.system_power_ensure_on)
+# и ждёт подключения интеграций. Предыдущая версия: includes/backup_hass_start_tasks.yaml.bak
 
 - id: '1761122347275'
-  alias: Уведомление о старте HASS (резервная копия + состояния)
-  description: Telegram + уведомление при старте, со сведениями о последней резервной копии и статусами тёплого пола и диодной подсветки
+  alias: Уведомление о старте HASS
+  description: "Telegram + уведомление при старте: системные нагрузки, связь, сеть/АКБ, сервер, бэкап, обновления, недоступные устройства"
+  mode: single
   triggers:
     - trigger: homeassistant
       event: start
   conditions: []
   actions:
     - delay: "00:00:20"  # ждём сеть и инициализацию сущностей
+    # Сначала включаем Диод и Тёплый пол, чтобы в уведомлении было реальное состояние
+    - action: script.system_power_ensure_on
+      continue_on_error: true
+    - delay: "00:00:20"  # даём подключиться Zigbee2MQTT / Deye
     - variables:
-        # Преобразуем ISO-время из сенсора в локальную зону и форматируем компактно
-        backup_line: >
-          {% set raw = states('sensor.backup_last_successful_automatic_backup') %}
-          {% if raw in ['unknown','unavailable',''] %}
-          🗄️ Последняя резервная копия: неизвестно
-          {% else %}
-          {% set dt = raw | as_datetime | as_local %}
-          🗄️ Последняя резервная копия: {{ dt.strftime('%H:%M') }}  {{ dt.strftime('%d.%m') }}
-          {% endif %}
-        teply_pol_line: >
-          {% if is_state('switch.system_teply_pol', 'on') %}🔥 Тёплый пол: ВКЛЮЧЕН
-          {% elif is_state('switch.system_teply_pol', 'off') %}🔥 Тёплый пол: ВЫКЛЮЧЕН
-          {% else %}🔥 Тёплый пол: состояние неизвестно{% endif %}
-        diod_line: >
-          {% if is_state('switch.system_diod', 'on') %}💡 Диодное освещение: ВКЛЮЧЕНО
-          {% elif is_state('switch.system_diod', 'off') %}💡 Диодное освещение: ВЫКЛЮЧЕНО
-          {% else %}💡 Диодное освещение: состояние неизвестно{% endif %}
+        msg: |-
+          {%- set ok = '✅' %}{%- set bad = '⚠️' %}
+          {%- set boot = states('sensor.system_monitor_last_boot') | as_datetime(none) %}
+          {%- set host_reboot = boot is not none and (now() - boot).total_seconds() < 900 %}
+          {%- set plc = states('switch.system_diod') not in ['unavailable','unknown'] %}
+          {%- set z2m = is_state('binary_sensor.zigbee2mqtt_bridge_connection_state','on') %}
+          {%- set deye = is_state('binary_sensor.deye_connection','on') %}
+          {%- set bk = states('sensor.backup_last_successful_automatic_backup') | as_datetime(none) %}
+          {%- set bk_age = ((now() - bk).total_seconds() / 3600) if bk is not none else 999 %}
+          {%- set upd = states.update | selectattr('state','eq','on') | map(attribute='name') | list %}
+          {%- set unav = states | selectattr('state','eq','unavailable') | selectattr('domain','in',['light','switch','cover','climate','fan','media_player']) | map(attribute='name') | list %}
+          {%- macro onoff(e) -%}{{ ok ~ ' включён' if is_state(e,'on') else (bad ~ ' ВЫКЛЮЧЕН' if is_state(e,'off') else '❔ ' ~ states(e)) }}{%- endmacro %}
+          🟢 <b>Home Assistant запущен</b> · {{ now().strftime('%H:%M, %d.%m') }}
+          <i>{{ 'после перезагрузки сервера — вероятно, пропадало питание' if host_reboot else 'перезапуск Home Assistant' }}</i>
+
+          <b>Системные нагрузки</b>
+          🔥 Тёплый пол: {{ onoff('switch.system_teply_pol') }}
+          💡 Диод: {{ onoff('switch.system_diod') }}
+
+          <b>Связь</b>
+          {{ ok if plc else bad }} PLC (modbus) · {{ ok if z2m else bad }} Zigbee · {{ ok if deye else bad }} Deye
+          ⚡ Сеть: {{ 'есть, ' ~ (states('sensor.deye_grid_l1_voltage') | float(0) | round(0) | int) ~ ' В' if is_state('binary_sensor.deye_grid','on') else 'НЕТ — работа от батареи' }} · 🔋 АКБ {{ states('sensor.deye_battery') }}%
+
+          <b>Сервер</b>
+          🌡 CPU {{ states('sensor.system_monitor_processor_temperature') | float(0) | round(0) | int }} °C · ОЗУ {{ states('sensor.system_monitor_memory_usage') | float(0) | round(0) | int }}% · Диск {{ states('sensor.system_monitor_disk_usage') | float(0) | round(0) | int }}%
+          🗄 Бэкап: {% if bk is not none %}{{ ok if bk_age < 26 else bad }} {{ bk | as_local | as_timestamp | timestamp_custom('%H:%M %d.%m') }} · {{ states('sensor.backup_last_successful_automatic_backup_size') | float(0) | round(0) | int }} МБ{% else %}{{ bad }} нет данных{% endif %}
+          ⬆️ Обновления: {{ 'нет' if not upd else upd | length ~ ' — ' ~ upd | join(', ') }}
+          {%- if unav %}
+          {{ bad }} Недоступно устройств: {{ unav | length }} — {{ unav[:5] | join(', ') }}{{ ' …' if unav | length > 5 }}
+          {%- endif %}
     - action: telegram_bot.send_message
+      continue_on_error: true
       data:
         config_entry_id: 01K85FEY9X86ZAEWBEGMWJEJ7V
         chat_id:
           - '374673383'
-        message: |
-          ✅ Home Assistant запущен
-          🕒 Время запуска: {{ now().strftime('%H:%M:%S, %d.%m.%Y') }}
-          {{ backup_line }}
-
-          {{ teply_pol_line }}
-          {{ diod_line }}
+        parse_mode: html
+        message: "{{ msg }}"
     - action: persistent_notification.create
       data:
-        title: "✅ HASS запущен"
-        message: |
-          🕒 Время запуска: {{ now().strftime('%H:%M:%S, %d.%m.%Y') }}
-          {{ backup_line }}
-
-          {{ teply_pol_line }}
-          {{ diod_line }}
-  mode: single
+        notification_id: hass_start
+        title: "🟢 Home Assistant запущен"
+        message: "{{ msg | regex_replace('</?(b|i)>', '') }}"

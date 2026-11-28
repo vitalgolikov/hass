@@ -40,6 +40,10 @@ fan_toilet1_control:
         - condition: state
           entity_id: input_boolean.toilet1_fan_pause
           state: "off"
+        # тихие часы 22:30–00:01 — не включать автоматически (пакет fan_night_quiet.yaml)
+        - condition: state
+          entity_id: binary_sensor.fan_quiet_hours
+          state: "off"
       action:
         - service: fan.turn_on
           target:
